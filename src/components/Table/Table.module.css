@@ -1,0 +1,173 @@
+.tableContainer {
+  border: 1px solid var(--quaternary-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.topContainer {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchContainer {
+  position: relative;
+}
+
+.searchInput::placeholder {
+  color: var(--tertiary-color);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--secondary-color);
+}
+
+.searchInput {
+  width: 250px;
+  padding: 8px 10px 8px 35px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid var(--quinary-color);
+  box-shadow: 0 0 0 1px var(--quaternary-color);
+  font-size: 14px;
+}
+
+.rightContainer {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 1px solid var(--quaternary-color);
+  border-top: 1px solid var(--quaternary-color);
+}
+
+.tableContainer table :is(th, td):not(:last-child) {
+  border-right: 1px solid var(--quaternary-color);
+}
+
+.tableContainer table tbody tr:not(:last-of-type) {
+  border-bottom: 1px solid var(--quaternary-color);
+}
+
+.tableContainer table tbody {
+  border-top: 1px solid var(--quaternary-color);
+}
+
+.tableContainer table thead {
+  background-color: var(--quinary-color);
+}
+
+.tableContainer table thead th {
+  padding: 12px 16px;
+  text-align: left;
+  color: var(--secondary-color);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.tableContainer table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.tableContainer table tbody tr:hover {
+  background-color: var(--quinary-color);
+}
+
+.tableContainer table tbody td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.paginationPagesContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pageButton {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pageButton:hover {
+  background-color: var(--quinary-color);
+}
+
+.pageButton.activePage {
+  background-color: var(--quinary-color);
+}
+
+.paginationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--quaternary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.paginationButton[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.paginationButton:hover {
+  background-color: var(--quinary-color);
+}
+
+.paginationButton:focus {
+  outline: none;
+}
+
+.paginationButton:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+
+.paginationText {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--tertiary-color);
+  font-weight: 500;
+}
+
+/* .tableContainer table tr:not(:last-child) {
+  border-bottom: 1px solid var(--quaternary-color);
+} */
+
+

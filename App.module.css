@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  flex-direction: row;
+}
+
+.contentContainer {
+  flex: 1
+}
+
+.routerContainer {
+  padding: 20px;
+}
