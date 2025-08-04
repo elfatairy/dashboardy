@@ -3,6 +3,8 @@ import { Table } from "../../components/Table/Table";
 import { Payroll, payrolls } from "../../data/payrolls";
 import { formatCurrency, generateHash } from "../../utils/helpers";
 import { getEmployeeById } from "../../data/employees";
+import { ExpensesGraph } from "../../components/ExpensesGraph/ExpensesGraph";
+import { DurationTabs } from "../../components/DurationTabs/DurationTabs";
 
 const statusIcons = {
   processed: `<svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g  stroke-linecap="round" stroke-linejoin="round"></g><g > <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"></path> </g></svg>`,
@@ -13,7 +15,93 @@ const statusIcons = {
 
 export class PayrollScreen {
   private hash: string = "";
+
   private payrollTable: Table<Payroll> = new Table<Payroll>();
+  private payrollExpensesGraph: ExpensesGraph = new ExpensesGraph();
+  private payrollExpensesPercentageGraph: ExpensesGraph = new ExpensesGraph();
+  private payrollDuration: DurationTabs = new DurationTabs();
+
+  private tableProps = {
+    headers: ["Payroll ID", "Total Amount", "Employee", "Pay Period", "Payment Method", "Processed Date", "Status"],
+    rows: payrolls,
+    renderRow: (row: Payroll) => {
+      return `
+        <tr>
+          <td>${row.id}</td>
+          <td>${formatCurrency(row.totalAmount)}</td>
+          <td style="color: var(--primary-color);">${getEmployeeById(row.employeeId)?.name}</td>
+          <td>${row.payPeriod}</td>
+          <td>${row.paymentMethod}</td>
+          <td>${new Date(row.processedDate).toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric" })}</td>
+          <td>
+            <span class="${styles.status} ${styles[row.status]}">
+              ${statusIcons[row.status]}
+              <span>${row.status}</span>
+            </span>
+          </td>
+        </tr>
+      `;
+    },
+    search: {
+      placeholder: "Search Payroll...",
+      searchHandler: (value: string, allRows: Payroll[]) => {
+        return allRows.filter((row) => {
+          return row.id.toString().includes(value) || 
+                  formatCurrency(row.totalAmount).toLowerCase().includes(value.toLowerCase()) ||
+                  getEmployeeById(row.employeeId)?.name.toLowerCase().includes(value.toLowerCase());
+        });
+      }
+    },
+    sorting: {
+      options: [
+        { label: "Processed Date", value: "processedDate", default: true  },
+        { label: "Total Amount", value: "totalAmount" },
+        { label: "Employee Name", value: "employeeName"},
+      ],
+      sortHandler: (option: string, allRows: Payroll[]) => {
+        return allRows.sort((a, b) => {
+          if (option === "processedDate") {
+            return new Date(a.processedDate).getTime() - new Date(b.processedDate).getTime();
+          } else if (option === "totalAmount") {
+            return b.totalAmount - a.totalAmount;
+          } else if (option === "employeeName") {
+            return getEmployeeById(a.employeeId)?.name.localeCompare(getEmployeeById(b.employeeId)?.name ?? "") ?? 0;
+          } else {
+            throw new Error(`Invalid sort option: ${option}`);
+          }
+        });
+      }
+    },
+    filtering: {
+      filters: {
+        status: {
+          options: [
+            { label: "All Statuses", value: "all", default: true },
+            { label: "Processed", value: "processed" },
+            { label: "Pending", value: "pending" },
+            { label: "Failed", value: "failed" },
+            { label: "Received", value: "received" },
+          ],
+          icon: `<svg width="18px" height="18px" viewBox="-2.4 -2.4 52.80 52.80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="3.6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="a" d="M3.6062,17.174A21.5158,21.5158,0,1,1,2.5,24H15.1606l5.0768,11.3551,7.0248-23.1028L31.0093,24h5.944"></path><circle class="a" cx="38.9439" cy="24" r="1.9907"></circle></g></svg>`
+        },
+        paymentMethod: {
+          options: [
+            { label: "All Payment Methods", value: "all", default: true },
+            { label: "Bank Transfer", value: "Bank Transfer" },
+            { label: "Direct Deposit", value: "Direct Deposit" },
+            { label: "Wire Transfer", value: "Wire Transfer" },
+          ],
+          icon: `<svg width="18px" height="18px" viewBox="-2.4 -2.4 52.80 52.80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="3.6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="a" d="M3.6062,17.174A21.5158,21.5158,0,1,1,2.5,24H15.1606l5.0768,11.3551,7.0248-23.1028L31.0093,24h5.944"></path><circle class="a" cx="38.9439" cy="24" r="1.9907"></circle></g></svg>`
+        },
+      },
+      filterHandler: (filter: string, value: string, allRows: Payroll[]) => {
+        if (value === "all") {
+          return allRows;
+        }
+        return allRows.filter((row) => row[filter as keyof Payroll] === value);
+      }
+    }
+  }
 
   constructor() {
     this.hash = generateHash();
@@ -23,89 +111,37 @@ export class PayrollScreen {
     const payroll = document.createElement("div");
     payroll.className = styles.payroll;
     payroll.innerHTML = `
+      <div class="${styles.payrollHeader}">
+        <div id="${this.hash}-payroll-duration-container"></div>
+        <div class="${styles.payrollHeaderRight}">
+          <div id="${this.hash}-payroll-export-button"></div>
+        </div>
+      </div>
+
+      <div class="${styles.payrollGraphs}">
+        <div id="${this.hash}-payroll-expenses-graph"></div>
+        <div id="${this.hash}-payroll-expenses-percentage-graph"></div>
+      </div>
+
       <div id="${this.hash}-payroll-table-container"></div>
     `;
-    this.payrollTable.render(payroll.querySelector(`#${this.hash}-payroll-table-container`) as HTMLElement, {
-      headers: ["Payroll ID", "Total Amount", "Employee", "Pay Period", "Payment Method", "Processed Date", "Status"],
-      rows: payrolls,
-      renderRow: (row: Payroll) => {
-        return `
-          <tr>
-            <td>${row.id}</td>
-            <td>${formatCurrency(row.totalAmount)}</td>
-            <td style="color: var(--primary-color);">${getEmployeeById(row.employeeId)?.name}</td>
-            <td>${row.payPeriod}</td>
-            <td>${row.paymentMethod}</td>
-            <td>${new Date(row.processedDate).toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric" })}</td>
-            <td>
-              <span class="${styles.status} ${styles[row.status]}">
-                ${statusIcons[row.status]}
-                <span>${row.status}</span>
-              </span>
-            </td>
-          </tr>
-        `;
-      },
-      search: {
-        placeholder: "Search Payroll...",
-        searchHandler: (value: string, allRows: Payroll[]) => {
-          return allRows.filter((row) => {
-            return row.id.toString().includes(value) || 
-                    formatCurrency(row.totalAmount).toLowerCase().includes(value.toLowerCase()) ||
-                    getEmployeeById(row.employeeId)?.name.toLowerCase().includes(value.toLowerCase());
-          });
-        }
-      },
-      sorting: {
-        options: [
-          { label: "Processed Date", value: "processedDate", default: true  },
-          { label: "Total Amount", value: "totalAmount" },
-          { label: "Employee Name", value: "employeeName"},
-        ],
-        sortHandler: (option: string, allRows: Payroll[]) => {
-          return allRows.sort((a, b) => {
-            if (option === "processedDate") {
-              return new Date(a.processedDate).getTime() - new Date(b.processedDate).getTime();
-            } else if (option === "totalAmount") {
-              return b.totalAmount - a.totalAmount;
-            } else if (option === "employeeName") {
-              return getEmployeeById(a.employeeId)?.name.localeCompare(getEmployeeById(b.employeeId)?.name ?? "") ?? 0;
-            } else {
-              throw new Error(`Invalid sort option: ${option}`);
-            }
-          });
-        }
-      },
-      filtering: {
-        filters: {
-          status: {
-            options: [
-              { label: "All Statuses", value: "all", default: true },
-              { label: "Processed", value: "processed" },
-              { label: "Pending", value: "pending" },
-              { label: "Failed", value: "failed" },
-              { label: "Received", value: "received" },
-            ],
-            icon: `<svg width="20px" height="20px" viewBox="-2.4 -2.4 52.80 52.80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="3.6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="a" d="M3.6062,17.174A21.5158,21.5158,0,1,1,2.5,24H15.1606l5.0768,11.3551,7.0248-23.1028L31.0093,24h5.944"></path><circle class="a" cx="38.9439" cy="24" r="1.9907"></circle></g></svg>`
-          },
-          paymentMethod: {
-            options: [
-              { label: "All Payment Methods", value: "all", default: true },
-              { label: "Bank Transfer", value: "Bank Transfer" },
-              { label: "Direct Deposit", value: "Direct Deposit" },
-              { label: "Wire Transfer", value: "Wire Transfer" },
-            ],
-            icon: `<svg width="20px" height="20px" viewBox="-2.4 -2.4 52.80 52.80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="3.6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="a" d="M3.6062,17.174A21.5158,21.5158,0,1,1,2.5,24H15.1606l5.0768,11.3551,7.0248-23.1028L31.0093,24h5.944"></path><circle class="a" cx="38.9439" cy="24" r="1.9907"></circle></g></svg>`
-          },
-        },
-        filterHandler: (filter: string, value: string, allRows: Payroll[]) => {
-          if (value === "all") {
-            return allRows;
-          }
-          return allRows.filter((row) => row[filter as keyof Payroll] === value);
-        }
-      }
+
+    this.payrollTable.render(payroll.querySelector(`#${this.hash}-payroll-table-container`) as HTMLElement, this.tableProps);
+    this.payrollExpensesGraph.render(payroll.querySelector(`#${this.hash}-payroll-expenses-graph`) as HTMLElement, {
+      period: "30-days"
     });
+    this.payrollExpensesPercentageGraph.render(payroll.querySelector(`#${this.hash}-payroll-expenses-percentage-graph`) as HTMLElement, {
+      period: "30-days"
+    });
+    this.payrollDuration.render(payroll.querySelector(`#${this.hash}-payroll-duration-container`) as HTMLElement, {
+      onChange: this.handleDurationChange.bind(this)
+    });
+
     container.appendChild(payroll);
+  }
+
+  private handleDurationChange(value: string): void {
+    this.payrollExpensesGraph.updatePeriod(value);
+    this.payrollExpensesPercentageGraph.updatePeriod(value);
   }
 }

@@ -2,10 +2,11 @@ import "./index.css";
 import styles from "./App.module.css";
 import { Navbar } from "./src/components/Navbar/Navbar.ts";
 import { Header } from "./src/components/Header/Header.ts";
-import { navItems } from "./src/utils/navItems.ts";
+import { navItems } from "./src/utils/constants.ts";
 import { PayrollScreen } from "./src/screens/Payroll/Payroll.ts";
 import { DashboardScreen } from "./src/screens/Dashboard/Dashboard.ts";
 import { generateHash } from "./src/utils/helpers.ts";
+import { LineGraph } from "./src/components/LineGraph/LineGraph.ts";
 
 export class App {
   private hash: string = "";

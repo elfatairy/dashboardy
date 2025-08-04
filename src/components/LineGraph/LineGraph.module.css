@@ -1,0 +1,22 @@
+.lineGraph {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lineGraphLabels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.lineGraphLabelText {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--tertiary-color);
+}
+
+.lineGraphLabelText:last-child {
+  color: var(--primary-color);
+}

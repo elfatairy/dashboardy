@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import { NavItem, navItems } from "../../utils/navItems";
+import { NavItem, navItems } from "../../utils/constants";
 import { generateHash } from "../../utils/helpers";
 
 export class Header {

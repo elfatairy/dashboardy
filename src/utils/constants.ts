@@ -31,3 +31,26 @@ export const navItems: NavItem[] = [
     href: "/payroll",
   },
 ];
+
+export const durationOptions = [
+  {
+    tag: "30-days",
+    label: "30 Days",
+    value: 30 * 24 * 60 * 60 * 1000,
+  },
+  {
+    tag: "3-months",
+    label: "3 Months",
+    value: 90 * 24 * 60 * 60 * 1000,
+  },
+  {
+    tag: "6-months",
+    label: "6 Months",
+    value: 180 * 24 * 60 * 60 * 1000,
+  },
+  {
+    tag: "1-year",
+    label: "1 Year",
+    value: 365 * 24 * 60 * 60 * 1000,
+  },
+];

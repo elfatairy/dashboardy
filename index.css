@@ -186,7 +186,11 @@ html {
   /* --quinary-color: #fafafa; */
   --quinary-color: #f3f3f3;
 
+  --success-color: #008236;
+  --error-color: #fb2c36;
+
   --navbar-width: 320px;
+
 }
 
 ul {

@@ -41,4 +41,11 @@
   color: #193cb8;
 }
 
+.payrollGraphs {
+  display: flex;
+  gap: 20px;
+}
 
+.payrollGraphs > div {
+  flex: 1;
+}

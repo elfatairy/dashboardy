@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.css";
 import profilePic from "../../../assets/images/profile-pic.jpg";
-import { navItems } from "../../utils/navItems";
+import { navItems } from "../../utils/constants";
 import { generateHash } from "../../utils/helpers";
 
 export class Navbar {

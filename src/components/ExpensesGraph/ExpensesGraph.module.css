@@ -1,0 +1,81 @@
+.block {
+  border: 1px solid var(--quaternary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blockHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  font-size: 14px;
+}
+
+.blockContent {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.blockContentLeft {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+}
+
+.blockContentLeftContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.totalExpenses {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.comparsionText {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.comparsionTextValue {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.comparsionPeriod {
+  color: var(--tertiary-color);
+}
+
+.comparsionTextValue[data-direction="up"] {
+  color: var(--success-color);
+}
+
+.comparsionTextValue[data-direction="down"] {
+  color: var(--error-color);
+}
+
+
+
+.blockContentRight {
+  height: 170px;
+  width: 300px;
+}
