@@ -5,6 +5,11 @@ import { payrolls } from "../../data/payrolls";
 import { earnings } from "../../data/earnings";
 import { BarGraph } from "../BarGraph/BarGraph";
 
+const colors = {
+  expenses: "#2980b9",
+  earnings: "#c0392b"
+}
+
 interface ExpensesEarningsGraphProps {
   period: string;
 }
@@ -65,8 +70,22 @@ export class ExpensesEarningsGraph {
             new Date(payroll.processedDate).getFullYear() === year
           ).reduce((acc, payroll) => acc + payroll.totalAmount, 0);
 
+          const totalEarnings = earnings.filter(earning => 
+            earning.month === month &&
+            earning.year === year
+          ).reduce((acc, earning) => acc + earning.earnings, 0);
+
           data.push({
-            value: totalExpenses,
+            values: [
+              {
+                value: totalEarnings,
+                color: colors.earnings
+              },
+              {
+                value: totalExpenses,
+                color: colors.expenses
+              },
+            ],
             label: getMonthName(month)
           });
         }
@@ -85,9 +104,28 @@ export class ExpensesEarningsGraph {
             Math.floor(new Date(payroll.processedDate).getMonth() / 3) === quarter &&
             new Date(payroll.processedDate).getFullYear() === year
           ).reduce((acc, payroll) => acc + payroll.totalAmount, 0);
+
+          const totalEarnings = earnings.filter(earning => 
+            Math.floor(earning.month / 3) === quarter &&
+            earning.year === year
+          ).reduce((acc, earning) => acc + earning.earnings, 0);
           
+          console.log("quarter", `Q${quarter + 1} ${year}`);
+          console.log("totalExpenses", totalExpenses);
+          console.log("totalEarnings", totalEarnings);
+
+
           data.push({
-            value: totalExpenses,
+            values: [
+              {
+                value: totalEarnings,
+                color: colors.earnings
+              },
+              {
+                value: totalExpenses,
+                color: colors.expenses
+              },
+            ],
             label: `Q${quarter + 1} ${year}`
           });
         }
@@ -107,8 +145,22 @@ export class ExpensesEarningsGraph {
             new Date(payroll.processedDate).getFullYear() === year
           ).reduce((acc, payroll) => acc + payroll.totalAmount, 0);
           
+          const totalEarnings = earnings.filter(earning => 
+            Math.floor(earning.month / 6) === halfYear &&
+            earning.year === year
+          ).reduce((acc, earning) => acc + earning.earnings, 0);
+
           data.push({
-            value: totalExpenses,
+            values: [
+              {
+                value: totalEarnings,
+                color: colors.earnings
+              },
+              {
+                value: totalExpenses,
+                color: colors.expenses
+              },
+            ],
             label: `H${halfYear + 1} ${year}`
           });
         }
@@ -122,8 +174,21 @@ export class ExpensesEarningsGraph {
             new Date(payroll.processedDate).getFullYear() === year
           ).reduce((acc, payroll) => acc + payroll.totalAmount, 0);
 
+          const totalEarnings = earnings.filter(earning => 
+            earning.year === year
+          ).reduce((acc, earning) => acc + earning.earnings, 0);
+
           data.push({
-            value: totalExpenses,
+            values: [
+              {
+                value: totalEarnings,
+                color: colors.earnings
+              },
+              {
+                value: totalExpenses,
+                color: colors.expenses
+              },
+            ],
             label: year.toString()
           });
         }
@@ -132,62 +197,7 @@ export class ExpensesEarningsGraph {
     }
 
     this.lineGraphContainer.innerHTML = "";
-    this.barGraph.render(this.lineGraphContainer, { 
-      data: [
-        {
-          label: "Jan",
-          values: [
-            {
-              value: 4000,
-              color: "#2980b9"
-            },
-            {
-              value: 3000,
-              color: "#c0392b"
-            }
-          ]
-        },
-        {
-          label: "Feb",
-          values: [
-            {
-              value: 2300,
-              color: "#2980b9"
-            },
-            {
-              value: 1700,
-              color: "#c0392b"
-            }
-          ]
-        },
-        {
-          label: "Mar",
-          values: [
-            {
-              value: 30000,
-              color: "#2980b9"
-            },
-            {
-              value: 4000,
-              color: "#c0392b"
-            }
-          ]
-        },
-        {
-          label: "Apr",
-          values: [
-            {
-              value: 13000,
-              color: "#2980b9"
-            },
-            {
-              value: 3000,
-              color: "#c0392b"
-            }
-          ]
-        },
-      ]
-    });
+    this.barGraph.render(this.lineGraphContainer, { data });
   }
 
   private renderContent(): void {
@@ -202,6 +212,7 @@ export class ExpensesEarningsGraph {
     let previousTotalEarnings = 0;
     let currentPercentage = 0;
     let previousPercentage = 0;
+
     switch (duration.tag) {
       case "30-days": {
         totalExpenses = payrolls.filter(payroll => 
@@ -216,6 +227,7 @@ export class ExpensesEarningsGraph {
 
         const previousMonth = new Date().getMonth() === 0 ? 11 : new Date().getMonth() - 1;
         const previousYear = new Date().getMonth() === 0 ? new Date().getFullYear() - 1 : new Date().getFullYear();
+
         previousTotalExpenses = payrolls.filter(payroll => 
           new Date(payroll.processedDate).getMonth() === previousMonth &&
           new Date(payroll.processedDate).getFullYear() === previousYear
@@ -301,7 +313,12 @@ export class ExpensesEarningsGraph {
     }
     currentPercentage = totalExpenses / totalEarnings * 100;
     previousPercentage = previousTotalExpenses / previousTotalEarnings * 100;
-    const percentage = currentPercentage / previousPercentage;
+    const percentage = currentPercentage - previousPercentage;
+
+    console.log("totalExpenses", totalExpenses);
+    console.log("totalEarnings", totalEarnings);
+    console.log("previousTotalExpenses", previousTotalExpenses);
+    console.log("previousTotalEarnings", previousTotalEarnings);
 
     this.leftContent.innerHTML = `
       <div class="${styles.blockContentLeftContent}">

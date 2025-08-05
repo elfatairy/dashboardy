@@ -33,7 +33,7 @@ export const payrolls: Payroll[] = [
   { id: "PR-762039", totalAmount: 4720.00, employeeId: "EMP-903284", payPeriod: "Aug 1 - Aug 31", paymentMethod: "Bank Transfer", processedDate: "2025-08-03", status: "pending" },
   { id: "PR-185930", totalAmount: 6050.00, employeeId: "EMP-482019", payPeriod: "Sep 1 - Sep 30", paymentMethod: "Direct Deposit", processedDate: "2025-07-03", status: "processed" },
   { id: "PR-603847", totalAmount: 5480.00, employeeId: "EMP-690123", payPeriod: "Oct 1 - Oct 31", paymentMethod: "Wire Transfer", processedDate: "2025-02-03", status: "received" },
-  { id: "PR-927148", totalAmount: 4950.00, employeeId: "EMP-158209", payPeriod: "Nov 1 - Nov 30", paymentMethod: "Bank Transfer", processedDate: "2025-01-29", status: "processed" },
+  { id: "PR-927148", totalAmount: 8950.00, employeeId: "EMP-158209", payPeriod: "Nov 1 - Nov 30", paymentMethod: "Bank Transfer", processedDate: "2025-01-29", status: "processed" },
   { id: "PR-358204", totalAmount: 6780.00, employeeId: "EMP-320984", payPeriod: "Dec 1 - Dec 31", paymentMethod: "Direct Deposit", processedDate: "2025-02-30", status: "failed" },
   { id: "PR-741962", totalAmount: 5670.00, employeeId: "EMP-871203", payPeriod: "Jan 1 - Jan 31", paymentMethod: "Wire Transfer", processedDate: "2024-01-28", status: "processed" },
   { id: "PR-204851", totalAmount: 5320.00, employeeId: "EMP-540982", payPeriod: "Feb 1 - Feb 28", paymentMethod: "Bank Transfer", processedDate: "2024-02-27", status: "received" },
