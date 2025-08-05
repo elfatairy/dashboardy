@@ -35,6 +35,30 @@
   gap: 8px;
 }
 
+.blockHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.blockHeaderRightItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blockHeaderRightItemPoint {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.blockHeaderRightItemLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+
 .blockContentLeftContent {
   display: flex;
   flex-direction: column;
