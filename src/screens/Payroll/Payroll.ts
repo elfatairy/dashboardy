@@ -62,7 +62,7 @@ export class PayrollScreen {
       sortHandler: (option: string, allRows: Payroll[]) => {
         return allRows.sort((a, b) => {
           if (option === "processedDate") {
-            return new Date(a.processedDate).getTime() - new Date(b.processedDate).getTime();
+            return new Date(b.processedDate).getTime() - new Date(a.processedDate).getTime();
           } else if (option === "totalAmount") {
             return b.totalAmount - a.totalAmount;
           } else if (option === "employeeName") {

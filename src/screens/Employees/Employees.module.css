@@ -1,0 +1,40 @@
+.employmentType {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.employmentType.full-time {
+  background-color: #d0fae5;
+  border-color: #a4f4cf;
+  color: #006045;
+}
+
+.employmentType.part-time {
+  background-color: #fef3c6;
+  border-color: #fee685;
+  color: #973c00;
+}
+
+.employmentType.contract {
+  background-color: #dff2fe;
+  border-color: #b8e6fe;
+  color: #193cb8;
+}
+
+.employmentType.intern {
+  background-color: #f0e0ff;
+  border-color: #e0c0ff;
+  color: #4f009e;
+}
+
+
+
+
+
+
+
+
+

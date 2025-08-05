@@ -86,15 +86,16 @@ export class Table<T extends Row> {
   render(container: HTMLElement, props: TableProps<T>): void {
     this.headers = props.headers;
     this.rawRows = props.rows;
-    this.handledRows = this.rawRows.sort(
-      (a, b) =>
-        new Date(b.processedDate).getTime() -
-        new Date(a.processedDate).getTime()
-    );
     this.renderRow = props.renderRow;
     this.search = props.search;
     this.sorting = props.sorting;
     this.filtering = props.filtering;
+    if (this.sorting) {
+      this.sortValue = this.sorting.options.filter((option) => option.default)[0].value;
+      this.handledRows = this.sorting.sortHandler(this.sortValue, this.rawRows);
+    } else {
+      this.handledRows = this.rawRows;
+    }
 
     const tableContainer = document.createElement("div");
     tableContainer.className = styles.tableContainer;

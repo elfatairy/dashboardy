@@ -7,6 +7,7 @@ import { PayrollScreen } from "./src/screens/Payroll/Payroll.ts";
 import { DashboardScreen } from "./src/screens/Dashboard/Dashboard.ts";
 import { generateHash } from "./src/utils/helpers.ts";
 import { LineGraph } from "./src/components/LineGraph/LineGraph.ts";
+import { EmployeesScreen } from "./src/screens/Employees/Employees.ts";
 
 export class App {
   private hash: string = "";
@@ -55,6 +56,7 @@ class Router {
   private routerContainer: HTMLElement | null = null;
   private Dashboard: DashboardScreen = new DashboardScreen();
   private Payroll: PayrollScreen = new PayrollScreen();
+  private Employees: EmployeesScreen = new EmployeesScreen();
 
   constructor() {
     window.addEventListener("spa-navigate", () => this.renderCurrentScreen());
@@ -72,6 +74,9 @@ class Router {
     switch (currentItem.name) {
       case "Payroll":
         this.Payroll.render(this.routerContainer!);
+        break;
+      case "Employees":
+        this.Employees.render(this.routerContainer!);
         break;
       case "Dashboard":
       default:

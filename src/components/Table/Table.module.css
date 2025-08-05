@@ -1,7 +1,6 @@
 .tableContainer {
   border: 1px solid var(--quaternary-color);
   border-radius: 8px;
-  overflow: hidden;
 }
 
 .topContainer {
