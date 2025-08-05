@@ -5,6 +5,7 @@ import { formatCurrency, generateHash } from "../../utils/helpers";
 import { getEmployeeById } from "../../data/employees";
 import { ExpensesGraph } from "../../components/ExpensesGraph/ExpensesGraph";
 import { DurationTabs } from "../../components/DurationTabs/DurationTabs";
+import { ExpensesEarningsGraph } from "../../components/ExpensesEarningsGraph/ExpensesEarningsGraph";
 
 const statusIcons = {
   processed: `<svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g  stroke-linecap="round" stroke-linejoin="round"></g><g > <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"></path> </g></svg>`,
@@ -18,7 +19,7 @@ export class PayrollScreen {
 
   private payrollTable: Table<Payroll> = new Table<Payroll>();
   private payrollExpensesGraph: ExpensesGraph = new ExpensesGraph();
-  private payrollExpensesPercentageGraph: ExpensesGraph = new ExpensesGraph();
+  private payrollExpensesEarningsGraph: ExpensesEarningsGraph = new ExpensesEarningsGraph();
   private payrollDuration: DurationTabs = new DurationTabs();
 
   private tableProps = {
@@ -120,7 +121,7 @@ export class PayrollScreen {
 
       <div class="${styles.payrollGraphs}">
         <div id="${this.hash}-payroll-expenses-graph"></div>
-        <div id="${this.hash}-payroll-expenses-percentage-graph"></div>
+        <div id="${this.hash}-payroll-expenses-earnings-graph"></div>
       </div>
 
       <div id="${this.hash}-payroll-table-container"></div>
@@ -130,7 +131,7 @@ export class PayrollScreen {
     this.payrollExpensesGraph.render(payroll.querySelector(`#${this.hash}-payroll-expenses-graph`) as HTMLElement, {
       period: "30-days"
     });
-    this.payrollExpensesPercentageGraph.render(payroll.querySelector(`#${this.hash}-payroll-expenses-percentage-graph`) as HTMLElement, {
+    this.payrollExpensesEarningsGraph.render(payroll.querySelector(`#${this.hash}-payroll-expenses-earnings-graph`) as HTMLElement, {
       period: "30-days"
     });
     this.payrollDuration.render(payroll.querySelector(`#${this.hash}-payroll-duration-container`) as HTMLElement, {
@@ -142,6 +143,6 @@ export class PayrollScreen {
 
   private handleDurationChange(value: string): void {
     this.payrollExpensesGraph.updatePeriod(value);
-    this.payrollExpensesPercentageGraph.updatePeriod(value);
+    this.payrollExpensesEarningsGraph.updatePeriod(value);
   }
 }
