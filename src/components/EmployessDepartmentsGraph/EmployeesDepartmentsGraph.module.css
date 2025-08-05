@@ -1,0 +1,39 @@
+.block {
+  border: 1px solid var(--quaternary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blockHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  font-size: 14px;
+}
+
+.toolTipContent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolTipContentDescription {
+  font-size: 12px;
+  color: var(--primary-color);
+}
+
+.graph {
+  height: 170px;
+}

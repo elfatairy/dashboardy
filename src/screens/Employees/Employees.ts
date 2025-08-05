@@ -3,6 +3,8 @@ import { generateHash, formatCurrency } from "../../utils/helpers";
 import { Table } from "../../components/Table/Table";
 import { Employee, employees, getEmployeeById } from "../../data/employees";
 import { Department, departments, getDepartmentById } from "../../data/departments";
+import { EmployeesDepartmentsGraph } from "../../components/EmployessDepartmentsGraph/EmployessDepartmentsGraph";
+import { ExpensesEarningsGraph } from "../../components/ExpensesEarningsGraph/ExpensesEarningsGraph";
 
 const employmentTypes = [
   { label: "All Employment Types", value: "all", default: true },
@@ -16,6 +18,7 @@ export class EmployeesScreen {
   private hash: string = "";
 
   private employeesTable: Table<Employee> = new Table<Employee>();
+  private employeesDepartmentsGraph: EmployeesDepartmentsGraph = new EmployeesDepartmentsGraph();
 
   private tableProps = {
     headers: ["Employee ID", "Phone", "Name", "Working Since", "Current Salary", "Department", "Role", "Employment Type"],
@@ -107,10 +110,16 @@ export class EmployeesScreen {
     const employees = document.createElement("div");
     employees.className = styles.employees;
     employees.innerHTML = `
+      <div class="${styles.employeesGraphs}">
+        <div class="${styles.employeesDepartmentsGraphs}" id="${this.hash}-employees-departments-graph"></div>
+        <div class="${styles.employeesEmploymentTypesGraphs}" id="${this.hash}-employees-employment-types-graph"></div>
+      </div>
+
       <div id="${this.hash}-employees-table-container"></div>
     `;
 
     this.employeesTable.render(employees.querySelector(`#${this.hash}-employees-table-container`) as HTMLElement, this.tableProps);
+    this.employeesDepartmentsGraph.render(employees.querySelector(`#${this.hash}-employees-departments-graph`) as HTMLElement);
 
     container.appendChild(employees);
   }

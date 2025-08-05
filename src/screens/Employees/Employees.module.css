@@ -1,3 +1,23 @@
+.employees {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.employeesGraphs {
+  display: flex;
+  gap: 16px;
+}
+
+.employeesDepartmentsGraphs {
+  flex: 8;
+}
+
+.employeesEmploymentTypesGraphs {
+  flex: 4;
+}
+
+
 .employmentType {
   padding: 4px 8px;
   border-radius: 4px;

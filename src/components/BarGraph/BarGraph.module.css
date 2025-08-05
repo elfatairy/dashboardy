@@ -1,22 +1,21 @@
 .barGraph {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 0 10px;
   height: 100%;
 }
 
 .barGraphItem {
-  display: flex;
-  flex: 1; 
-  flex-direction: column;
-  gap: 10px;
+  display: contents;
 }
 
 .barGraphItemValues {
   display: flex;
   justify-content: center;
   gap: 2px;
-  flex: 1;
+  grid-row: 1;
 }
 
 .barGraphItemValueContainer {
@@ -39,8 +38,19 @@
   font-size: 14px;
   color: var(--tertiary-color);
   text-align: center;
+  grid-row: 2;
+  transition: color 0.3s ease;
+  padding-top: 10px;
 }
 
-.barGraphItem:last-child .barGraphLabelText {
+.barGraphItem.label-last:last-child .barGraphLabelText {
+  color: var(--primary-color);
+}
+
+.barGraphItem.label-on-hover {
+  cursor: pointer;
+}
+
+.barGraphItem.label-on-hover:hover .barGraphLabelText {
   color: var(--primary-color);
 }
