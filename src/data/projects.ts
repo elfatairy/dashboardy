@@ -16,6 +16,10 @@ export interface Project {
 type ProjectStatus = "In Progress" | "Completed" | "Planning" | "On Hold" | "Cancelled" | "Overdue";
 type ProjectPriority = "Low" | "Medium" | "High" | "Critical";
 
+export const getProjectById = (id: string) => {
+  return projects.find(project => project.id === id);
+}
+
 export const projects: Project[] = [
   {
     id: "PROJ-001",

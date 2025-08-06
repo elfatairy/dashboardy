@@ -17,7 +17,7 @@ type TaskPriority = "Low" | "Medium" | "High" | "Critical";
 export const tasks: Task[] = [
   // PROJ-001: Customer Portal Redesign (In Progress) - 15 tasks
   {
-    id: "TASK-001",
+    id: "T-001",
     name: "UI/UX Design Research",
     description: "Conduct user research and competitor analysis for portal redesign",
     currentStatus: "Completed",
@@ -29,7 +29,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-002",
+    id: "T-002",
     name: "Wireframe Creation",
     description: "Create detailed wireframes for all portal pages",
     currentStatus: "Completed",
@@ -41,7 +41,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-003",
+    id: "T-003",
     name: "Frontend Component Library",
     description: "Develop reusable React components for the new design system",
     currentStatus: "In Progress",
@@ -53,7 +53,7 @@ export const tasks: Task[] = [
     progress: 75
   },
   {
-    id: "TASK-004",
+    id: "T-004",
     name: "Backend API Refactoring",
     description: "Refactor existing APIs to support new portal features",
     currentStatus: "In Progress",
@@ -65,7 +65,7 @@ export const tasks: Task[] = [
     progress: 60
   },
   {
-    id: "TASK-005",
+    id: "T-005",
     name: "User Authentication System",
     description: "Implement enhanced authentication with SSO support",
     currentStatus: "Completed",
@@ -77,7 +77,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-006",
+    id: "T-006",
     name: "Database Schema Migration",
     description: "Update database schema to support new portal features",
     currentStatus: "In Progress",
@@ -89,7 +89,7 @@ export const tasks: Task[] = [
     progress: 80
   },
   {
-    id: "TASK-007",
+    id: "T-007",
     name: "Self-Service Features Development",
     description: "Build self-service account management and billing features",
     currentStatus: "In Progress",
@@ -101,7 +101,7 @@ export const tasks: Task[] = [
     progress: 40
   },
   {
-    id: "TASK-008",
+    id: "T-008",
     name: "Responsive Design Implementation",
     description: "Ensure portal works seamlessly on mobile and tablet devices",
     currentStatus: "In Progress",
@@ -113,7 +113,7 @@ export const tasks: Task[] = [
     progress: 35
   },
   {
-    id: "TASK-009",
+    id: "T-009",
     name: "Performance Optimization",
     description: "Optimize portal loading times and overall performance",
     currentStatus: "On Hold",
@@ -125,7 +125,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-010",
+    id: "T-010",
     name: "Security Testing",
     description: "Conduct comprehensive security testing of new portal",
     currentStatus: "On Hold",
@@ -137,7 +137,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-011",
+    id: "T-011",
     name: "User Acceptance Testing",
     description: "Coordinate UAT with key customer stakeholders",
     currentStatus: "On Hold",
@@ -149,7 +149,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-012",
+    id: "T-012",
     name: "Documentation Creation",
     description: "Create user guides and technical documentation",
     currentStatus: "On Hold",
@@ -161,7 +161,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-013",
+    id: "T-013",
     name: "Training Material Development",
     description: "Develop training materials for customer support team",
     currentStatus: "On Hold",
@@ -173,7 +173,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-014",
+    id: "T-014",
     name: "Production Deployment",
     description: "Deploy new portal to production environment",
     currentStatus: "On Hold",
@@ -185,7 +185,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-015",
+    id: "T-015",
     name: "Post-Launch Monitoring",
     description: "Monitor portal performance and user feedback post-launch",
     currentStatus: "On Hold",
@@ -199,7 +199,7 @@ export const tasks: Task[] = [
 
   // PROJ-002: Data Analytics Platform (Planning) - 12 tasks
   {
-    id: "TASK-016",
+    id: "T-016",
     name: "Requirements Gathering",
     description: "Gather detailed requirements from all departments for analytics needs",
     currentStatus: "In Progress",
@@ -211,7 +211,7 @@ export const tasks: Task[] = [
     progress: 70
   },
   {
-    id: "TASK-017",
+    id: "T-017",
     name: "Data Source Inventory",
     description: "Catalog all existing data sources across the organization",
     currentStatus: "In Progress",
@@ -223,7 +223,7 @@ export const tasks: Task[] = [
     progress: 45
   },
   {
-    id: "TASK-018",
+    id: "T-018",
     name: "Technology Stack Selection",
     description: "Evaluate and select appropriate analytics technologies and tools",
     currentStatus: "In Progress",
@@ -235,7 +235,7 @@ export const tasks: Task[] = [
     progress: 25
   },
   {
-    id: "TASK-019",
+    id: "T-019",
     name: "Data Pipeline Architecture",
     description: "Design architecture for data ingestion and processing pipelines",
     currentStatus: "On Hold",
@@ -247,7 +247,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-020",
+    id: "T-020",
     name: "Data Warehouse Setup",
     description: "Set up cloud-based data warehouse infrastructure",
     currentStatus: "On Hold",
@@ -259,7 +259,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-021",
+    id: "T-021",
     name: "ETL Process Development",
     description: "Develop extract, transform, load processes for data integration",
     currentStatus: "On Hold",
@@ -271,7 +271,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-022",
+    id: "T-022",
     name: "Dashboard Framework",
     description: "Build framework for creating interactive dashboards",
     currentStatus: "On Hold",
@@ -283,7 +283,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-023",
+    id: "T-023",
     name: "Real-time Processing Engine",
     description: "Implement real-time data processing capabilities",
     currentStatus: "On Hold",
@@ -295,7 +295,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-024",
+    id: "T-024",
     name: "Self-Service Analytics Tools",
     description: "Develop tools for non-technical users to create their own reports",
     currentStatus: "On Hold",
@@ -307,7 +307,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-025",
+    id: "T-025",
     name: "Data Governance Framework",
     description: "Establish data quality standards and governance policies",
     currentStatus: "On Hold",
@@ -319,7 +319,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-026",
+    id: "T-026",
     name: "User Training Program",
     description: "Create comprehensive training program for analytics platform users",
     currentStatus: "On Hold",
@@ -331,7 +331,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-027",
+    id: "T-027",
     name: "Performance Testing",
     description: "Test platform performance with large datasets and concurrent users",
     currentStatus: "On Hold",
@@ -345,7 +345,7 @@ export const tasks: Task[] = [
 
   // PROJ-003: Mobile App Security Audit (Completed) - 10 tasks
   {
-    id: "TASK-028",
+    id: "T-028",
     name: "Security Assessment Planning",
     description: "Plan comprehensive security assessment methodology",
     currentStatus: "Completed",
@@ -357,7 +357,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-029",
+    id: "T-029",
     name: "Static Code Analysis",
     description: "Perform static analysis of mobile app codebase",
     currentStatus: "Completed",
@@ -369,7 +369,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-030",
+    id: "T-030",
     name: "Penetration Testing",
     description: "Conduct penetration testing on mobile application",
     currentStatus: "Completed",
@@ -381,7 +381,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-031",
+    id: "T-031",
     name: "Vulnerability Assessment",
     description: "Identify and catalog all security vulnerabilities",
     currentStatus: "Completed",
@@ -393,7 +393,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-032",
+    id: "T-032",
     name: "Multi-Factor Authentication Implementation",
     description: "Implement MFA for enhanced user authentication",
     currentStatus: "Completed",
@@ -405,7 +405,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-033",
+    id: "T-033",
     name: "Data Encryption Implementation",
     description: "Implement end-to-end encryption for sensitive data",
     currentStatus: "Completed",
@@ -417,7 +417,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-034",
+    id: "T-034",
     name: "Security Patch Implementation",
     description: "Apply security patches for identified vulnerabilities",
     currentStatus: "Completed",
@@ -429,7 +429,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-035",
+    id: "T-035",
     name: "Compliance Verification",
     description: "Verify compliance with security standards and regulations",
     currentStatus: "Completed",
@@ -441,7 +441,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-036",
+    id: "T-036",
     name: "Security Testing",
     description: "Perform final security testing after implementations",
     currentStatus: "Completed",
@@ -453,7 +453,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-037",
+    id: "T-037",
     name: "Security Documentation",
     description: "Create comprehensive security documentation and guidelines",
     currentStatus: "Completed",
@@ -467,7 +467,7 @@ export const tasks: Task[] = [
 
   // PROJ-004: Sales CRM Integration (In Progress) - 15 tasks
   {
-    id: "TASK-038",
+    id: "T-038",
     name: "CRM System Analysis",
     description: "Analyze existing CRM system capabilities and limitations",
     currentStatus: "Completed",
@@ -479,7 +479,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-039",
+    id: "T-039",
     name: "Sales Automation Tool Evaluation",
     description: "Evaluate and select appropriate sales automation tools",
     currentStatus: "Completed",
@@ -491,7 +491,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-040",
+    id: "T-040",
     name: "Integration Architecture Design",
     description: "Design technical architecture for CRM and automation tool integration",
     currentStatus: "Completed",
@@ -503,7 +503,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-041",
+    id: "T-041",
     name: "API Development",
     description: "Develop APIs for seamless data exchange between systems",
     currentStatus: "In Progress",
@@ -515,7 +515,7 @@ export const tasks: Task[] = [
     progress: 70
   },
   {
-    id: "TASK-042",
+    id: "T-042",
     name: "Lead Scoring Algorithm",
     description: "Implement automated lead scoring based on predefined criteria",
     currentStatus: "In Progress",
@@ -527,7 +527,7 @@ export const tasks: Task[] = [
     progress: 50
   },
   {
-    id: "TASK-043",
+    id: "T-043",
     name: "Lead Routing System",
     description: "Build automated lead routing system based on territory and expertise",
     currentStatus: "In Progress",
@@ -539,7 +539,7 @@ export const tasks: Task[] = [
     progress: 35
   },
   {
-    id: "TASK-044",
+    id: "T-044",
     name: "Marketing Tool Integration",
     description: "Integrate with existing marketing automation platforms",
     currentStatus: "In Progress",
@@ -551,7 +551,7 @@ export const tasks: Task[] = [
     progress: 25
   },
   {
-    id: "TASK-045",
+    id: "T-045",
     name: "Data Migration Planning",
     description: "Plan migration of existing customer and lead data",
     currentStatus: "Completed",
@@ -563,7 +563,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-046",
+    id: "T-046",
     name: "Reporting Dashboard Development",
     description: "Create advanced reporting dashboards for sales metrics",
     currentStatus: "On Hold",
@@ -575,7 +575,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-047",
+    id: "T-047",
     name: "Mobile App Integration",
     description: "Ensure CRM integration works seamlessly with mobile sales app",
     currentStatus: "On Hold",
@@ -587,7 +587,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-048",
+    id: "T-048",
     name: "User Training Development",
     description: "Develop training materials for sales team on new integrated system",
     currentStatus: "On Hold",
@@ -599,7 +599,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-049",
+    id: "T-049",
     name: "System Testing",
     description: "Comprehensive testing of integrated CRM and automation systems",
     currentStatus: "On Hold",
@@ -611,7 +611,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-050",
+    id: "T-050",
     name: "Performance Optimization",
     description: "Optimize system performance for high-volume sales operations",
     currentStatus: "On Hold",
@@ -623,7 +623,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-051",
+    id: "T-051",
     name: "Production Deployment",
     description: "Deploy integrated system to production environment",
     currentStatus: "On Hold",
@@ -635,7 +635,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-052",
+    id: "T-052",
     name: "Post-Launch Support",
     description: "Provide ongoing support and monitoring after system launch",
     currentStatus: "On Hold",
@@ -649,7 +649,7 @@ export const tasks: Task[] = [
 
   // PROJ-005: Employee Onboarding System (In Progress) - 13 tasks
   {
-    id: "TASK-053",
+    id: "T-053",
     name: "Current Process Analysis",
     description: "Analyze existing onboarding processes and identify pain points",
     currentStatus: "Completed",
@@ -661,7 +661,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-054",
+    id: "T-054",
     name: "System Requirements Definition",
     description: "Define detailed requirements for digital onboarding platform",
     currentStatus: "Completed",
@@ -673,7 +673,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-055",
+    id: "T-055",
     name: "Platform Architecture Design",
     description: "Design technical architecture for onboarding platform",
     currentStatus: "In Progress",
@@ -685,7 +685,7 @@ export const tasks: Task[] = [
     progress: 80
   },
   {
-    id: "TASK-056",
+    id: "T-056",
     name: "Document Management System",
     description: "Build digital document collection and management system",
     currentStatus: "In Progress",
@@ -697,7 +697,7 @@ export const tasks: Task[] = [
     progress: 60
   },
   {
-    id: "TASK-057",
+    id: "T-057",
     name: "Task Automation Engine",
     description: "Develop automated task tracking and assignment system",
     currentStatus: "In Progress",
@@ -709,7 +709,7 @@ export const tasks: Task[] = [
     progress: 40
   },
   {
-    id: "TASK-058",
+    id: "T-058",
     name: "Employee Portal Development",
     description: "Create employee-facing portal for onboarding activities",
     currentStatus: "In Progress",
@@ -721,7 +721,7 @@ export const tasks: Task[] = [
     progress: 25
   },
   {
-    id: "TASK-059",
+    id: "T-059",
     name: "HR Dashboard Development",
     description: "Build HR dashboard for monitoring onboarding progress",
     currentStatus: "On Hold",
@@ -733,7 +733,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-060",
+    id: "T-060",
     name: "Integration with HRIS",
     description: "Integrate onboarding system with existing HR information system",
     currentStatus: "On Hold",
@@ -745,7 +745,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-061",
+    id: "T-061",
     name: "E-signature Implementation",
     description: "Implement electronic signature capabilities for documents",
     currentStatus: "On Hold",
@@ -757,7 +757,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-062",
+    id: "T-062",
     name: "Notification System",
     description: "Build automated notification system for onboarding milestones",
     currentStatus: "On Hold",
@@ -769,7 +769,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-063",
+    id: "T-063",
     name: "Mobile App Development",
     description: "Develop mobile application for onboarding on-the-go",
     currentStatus: "On Hold",
@@ -781,7 +781,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-064",
+    id: "T-064",
     name: "Analytics and Reporting",
     description: "Implement analytics to track onboarding efficiency and satisfaction",
     currentStatus: "On Hold",
@@ -793,7 +793,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-065",
+    id: "T-065",
     name: "User Testing and Feedback",
     description: "Conduct user testing with new hires and collect feedback",
     currentStatus: "On Hold",
@@ -807,7 +807,7 @@ export const tasks: Task[] = [
 
   // PROJ-006: Legacy System Migration (Overdue) - 15 tasks
   {
-    id: "TASK-066",
+    id: "T-066",
     name: "Legacy System Assessment",
     description: "Comprehensive assessment of all legacy systems and dependencies",
     currentStatus: "Completed",
@@ -819,7 +819,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-067",
+    id: "T-067",
     name: "Cloud Platform Selection",
     description: "Evaluate and select appropriate cloud infrastructure platform",
     currentStatus: "Completed",
@@ -831,7 +831,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-068",
+    id: "T-068",
     name: "Migration Strategy Development",
     description: "Develop detailed migration strategy and timeline",
     currentStatus: "Completed",
@@ -843,7 +843,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-069",
+    id: "T-069",
     name: "Application #1 Migration",
     description: "Migrate customer management application to cloud",
     currentStatus: "Completed",
@@ -855,7 +855,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-070",
+    id: "T-070",
     name: "Application #2 Migration",
     description: "Migrate inventory management system to cloud",
     currentStatus: "Completed",
@@ -867,7 +867,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-071",
+    id: "T-071",
     name: "Application #3 Migration",
     description: "Migrate financial reporting system to cloud",
     currentStatus: "Completed",
@@ -879,7 +879,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-072",
+    id: "T-072",
     name: "Application #4 Migration",
     description: "Migrate HR management system to cloud",
     currentStatus: "In Progress",
@@ -891,7 +891,7 @@ export const tasks: Task[] = [
     progress: 85
   },
   {
-    id: "TASK-073",
+    id: "T-073",
     name: "Application #5 Migration",
     description: "Migrate sales tracking system to cloud",
     currentStatus: "On Hold",
@@ -903,7 +903,7 @@ export const tasks: Task[] = [
     progress: 70
   },
   {
-    id: "TASK-074",
+    id: "T-074",
     name: "Data Migration Validation",
     description: "Validate integrity and completeness of migrated data",
     currentStatus: "In Progress",
@@ -915,7 +915,7 @@ export const tasks: Task[] = [
     progress: 90
   },
   {
-    id: "TASK-075",
+    id: "T-075",
     name: "Performance Testing",
     description: "Test performance of migrated applications under load",
     currentStatus: "On Hold",
@@ -927,7 +927,7 @@ export const tasks: Task[] = [
     progress: 75
   },
   {
-    id: "TASK-076",
+    id: "T-076",
     name: "Security Configuration",
     description: "Configure security settings and access controls for cloud systems",
     currentStatus: "In Progress",
@@ -939,7 +939,7 @@ export const tasks: Task[] = [
     progress: 95
   },
   {
-    id: "TASK-077",
+    id: "T-077",
     name: "Network Configuration",
     description: "Set up network connectivity and VPN access to cloud systems",
     currentStatus: "Completed",
@@ -951,7 +951,7 @@ export const tasks: Task[] = [
     progress: 100
   },
   {
-    id: "TASK-078",
+    id: "T-078",
     name: "User Training",
     description: "Train users on new cloud-based systems and procedures",
     currentStatus: "On Hold",
@@ -963,7 +963,7 @@ export const tasks: Task[] = [
     progress: 60
   },
   {
-    id: "TASK-079",
+    id: "T-079",
     name: "Legacy System Decommissioning",
     description: "Safely decommission old legacy systems after migration",
     currentStatus: "On Hold",
@@ -975,7 +975,7 @@ export const tasks: Task[] = [
     progress: 0
   },
   {
-    id: "TASK-080",
+    id: "T-080",
     name: "Cost Optimization Review",
     description: "Review and optimize cloud infrastructure costs",
     currentStatus: "On Hold",

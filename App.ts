@@ -9,6 +9,7 @@ import { generateHash } from "./src/utils/helpers.ts";
 import { EmployeesScreen } from "./src/screens/Employees/Employees.ts";
 import { DepartmentsScreen } from "./src/screens/Departments/Departments.ts";
 import { ProjectsScreen } from "./src/screens/Projects/Projects.ts";
+import { TasksScreen } from "./src/screens/Tasks/Tasks.ts";
 
 export class App {
   private hash: string = "";
@@ -57,9 +58,11 @@ class Router {
   private routerContainer: HTMLElement | null = null;
   private Dashboard: DashboardScreen = new DashboardScreen();
   private Projects: ProjectsScreen = new ProjectsScreen();
+  private Tasks: TasksScreen = new TasksScreen();
   private Departments: DepartmentsScreen = new DepartmentsScreen();
   private Employees: EmployeesScreen = new EmployeesScreen();
   private Payroll: PayrollScreen = new PayrollScreen();
+
   constructor() {
     window.addEventListener("spa-navigate", () => this.renderCurrentScreen());
   }
@@ -76,6 +79,9 @@ class Router {
     switch (currentItem.name) {
       case "Projects":
         this.Projects.render(this.routerContainer!);
+        break;
+      case "Tasks":
+        this.Tasks.render(this.routerContainer!);
         break;
       case "Departments":
         this.Departments.render(this.routerContainer!);
