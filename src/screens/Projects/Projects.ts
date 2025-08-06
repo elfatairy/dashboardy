@@ -58,9 +58,9 @@ export class ProjectsScreen {
             const statusOrder = {
               "Overdue": 1,
               "In Progress": 2,
-              "Completed": 3,
-              "Planning": 4,
-              "On Hold": 5,
+              "Planning": 3,
+              "On Hold": 4,
+              "Completed": 5,
               "Cancelled": 6
             };
             return statusOrder[a.currentStatus] - statusOrder[b.currentStatus];

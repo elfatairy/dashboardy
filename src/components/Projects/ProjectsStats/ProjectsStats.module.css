@@ -2,43 +2,37 @@
   border: 1px solid var(--quaternary-color);
   border-radius: 8px;
   overflow: hidden;
-  padding: 16px;
+  padding: 16px 0;
   display: flex;
 }
 
 .blockItem {
   flex: 1;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 16px;
+}
+
+.blockItemLeft {
+  display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 0 16px;
-}
-
-.blockItem:first-child {
-  padding-left: 0;
-}
-
-.blockItem:last-child {
-  padding-right: 0;
 }
 
 .blockItem:not(:last-child) {
   border-right: 1px solid var(--quaternary-color);
 }
 
-.blockItemHeader {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.blockItemTitle {
   font-weight: 500;
   color: var(--secondary-color);
-  font-size: 14px;
+  font-size: 16px;
 }
 
-.blockItemHeaderText {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--secondary-color);
+.blockItemRight {
+  color: var(--primary-color);
 }
 
 .blockItemValue {
