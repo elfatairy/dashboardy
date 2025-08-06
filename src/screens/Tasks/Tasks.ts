@@ -4,6 +4,9 @@ import { Table } from "../../components/ui/Table/Table";
 import { Task, tasks } from "../../data/tasks";
 import { getEmployeeById } from "../../data/employees";
 import { getProjectById, projects } from "../../data/projects";
+import { ProgressBar } from "../../components/ui/ProgressBar/ProgressBar";
+
+const colors: [string, string] = ["#3498db", "#8e44ad"];
 
 export class TasksScreen {
   private hash: string = "";
@@ -14,17 +17,26 @@ export class TasksScreen {
     headers: ["Task ID", "Task Name", "Project", "Current Status", "Priority", "Progress", "Employees"],
     rows: tasks,
     renderRow: (row: Task) => {
-      return `
-        <tr>
-          <td>${row.id}</td>
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${row.id}</td>
           <td>${row.name}</td>
           <td>${getProjectById(row.projectId)?.name}</td>
           <td><span class="${styles.statusTag} ${styles[row.currentStatus.toLowerCase().replace(" ", "-")]}">${row.currentStatus}</span></td>
           <td><span class="${styles.PriorityBadge} ${styles[row.priority.toLowerCase()]}">${row.priority}</span></td>
-          <td>${row.progress}%</td>
+          <td>
+            <div class="${styles.progressBarContainer}">
+              <div class="${styles.progressBar}" data-progress="${row.progress}"></div>
+              <span class="${styles.progressBarLabel}">${row.progress}%</span>
+            </div>
+          </td>
           <td>${row.employees.map(employeeId => getEmployeeById(employeeId)?.name).join(", ")}</td>
-        </tr>
       `;
+
+      const progressBar = new ProgressBar();
+      progressBar.render(tr.querySelector(`[data-progress]`) as HTMLElement, { progress: row.progress, colors: colors });
+
+      return tr.outerHTML;
     },
     search: {
       placeholder: "Search Tasks...",

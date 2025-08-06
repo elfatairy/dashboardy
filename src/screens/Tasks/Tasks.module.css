@@ -62,7 +62,20 @@
   color: #005f78;
 }
 
+.progressBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.progressBar {
+}
+
+.progressBarLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
 
 
 

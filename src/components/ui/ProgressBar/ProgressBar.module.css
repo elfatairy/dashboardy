@@ -1,0 +1,4 @@
+.progressBar {
+  display: flex;
+  image-rendering: pixelated;
+}
