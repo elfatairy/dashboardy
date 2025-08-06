@@ -3,11 +3,13 @@ import { generateHash, formatCurrency } from "../../utils/helpers";
 import { Table } from "../../components/ui/Table/Table";
 import { Project, projects } from "../../data/projects";
 import { getEmployeeById } from "../../data/employees";
+import { ProjectsStats } from "../../components/Projects/ProjectsStats/ProjectsStats";
 
 export class ProjectsScreen {
   private hash: string = "";
 
   private departmentsTable: Table<Project> = new Table<Project>();
+  private projectsStats: ProjectsStats = new ProjectsStats();
 
   private tableProps = {
     headers: ["Project ID", "Name", "Current Status", "Started At", "End Date", "Priority", "Budget", "Project Manager"],
@@ -54,11 +56,12 @@ export class ProjectsScreen {
             return a.name.localeCompare(b.name);
           } else if (option === "currentStatus") {
             const statusOrder = {
-              "In Progress": 1,
-              "Completed": 2,
-              "Planning": 3,
-              "On Hold": 4,
-              "Cancelled": 5
+              "Overdue": 1,
+              "In Progress": 2,
+              "Completed": 3,
+              "Planning": 4,
+              "On Hold": 5,
+              "Cancelled": 6
             };
             return statusOrder[a.currentStatus] - statusOrder[b.currentStatus];
           } else if (option === "startedAt") {
@@ -155,10 +158,12 @@ export class ProjectsScreen {
     const projects = document.createElement("div");
     projects.className = styles.projects;
     projects.innerHTML = `
+      <div id="${this.hash}-projects-stats-container"></div>
       <div id="${this.hash}-projects-table-container"></div>
     `;
 
     this.departmentsTable.render(projects.querySelector(`#${this.hash}-projects-table-container`) as HTMLElement, this.tableProps);
+    this.projectsStats.render(projects.querySelector(`#${this.hash}-projects-stats-container`) as HTMLElement);
 
     container.appendChild(projects);
   }

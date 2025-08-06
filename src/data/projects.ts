@@ -13,7 +13,7 @@ export interface Project {
   objectives: string[];
 }
 
-type ProjectStatus = "In Progress" | "Completed" | "Planning" | "On Hold" | "Cancelled";
+type ProjectStatus = "In Progress" | "Completed" | "Planning" | "On Hold" | "Cancelled" | "Overdue";
 type ProjectPriority = "Low" | "Medium" | "High" | "Critical";
 
 export const projects: Project[] = [
@@ -23,8 +23,8 @@ export const projects: Project[] = [
     description: "Complete overhaul of the customer-facing portal to improve user experience and modernize the interface",
     currentStatus: "In Progress",
     departments: ["DEPT-001", "DEPT-006"], // Engineering, Product
-    startedAt: new Date("2024-01-15"),
-    endDate: new Date("2024-04-30"),
+    startedAt: new Date("2024-08-15"),
+    endDate: new Date("2027-02-28"),
     priority: "High",
     budget: 150000,
     progress: 65,
@@ -42,8 +42,8 @@ export const projects: Project[] = [
     description: "Build an internal analytics platform to provide real-time insights into business metrics and customer behavior",
     currentStatus: "Planning",
     departments: ["DEPT-001", "DEPT-008"], // Engineering, Operations
-    startedAt: new Date("2024-02-01"),
-    endDate: new Date("2024-07-15"),
+    startedAt: new Date("2024-11-01"),
+    endDate: new Date("2027-05-15"),
     priority: "Medium",
     budget: 250000,
     progress: 25,
@@ -61,8 +61,8 @@ export const projects: Project[] = [
     description: "Comprehensive security assessment and implementation of enhanced security measures for the mobile application",
     currentStatus: "Completed",
     departments: ["DEPT-001"], // Engineering
-    startedAt: new Date("2023-11-01"),
-    endDate: new Date("2024-01-31"),
+    startedAt: new Date("2024-05-01"),
+    endDate: new Date("2024-09-30"),
     priority: "Critical",
     budget: 75000,
     progress: 100,
@@ -80,8 +80,8 @@ export const projects: Project[] = [
     description: "Integrate existing CRM system with new sales automation tools to streamline lead management and customer tracking",
     currentStatus: "In Progress",
     departments: ["DEPT-005", "DEPT-001", "DEPT-008"], // Sales, Engineering, Operations
-    startedAt: new Date("2024-02-20"),
-    endDate: new Date("2024-06-15"),
+    startedAt: new Date("2024-09-20"),
+    endDate: new Date("2026-12-15"),
     priority: "High",
     budget: 120000,
     progress: 45,
@@ -99,8 +99,8 @@ export const projects: Project[] = [
     description: "Develop a comprehensive digital onboarding platform to streamline new hire processes and improve employee experience",
     currentStatus: "In Progress",
     departments: ["DEPT-004", "DEPT-001", "DEPT-006"], // HR, Engineering, Product
-    startedAt: new Date("2024-03-01"),
-    endDate: new Date("2024-05-30"),
+    startedAt: new Date("2024-10-01"),
+    endDate: new Date("2027-01-30"),
     priority: "Medium",
     budget: 90000,
     progress: 30,
@@ -110,6 +110,25 @@ export const projects: Project[] = [
       "Create digital document management system",
       "Implement automated task tracking",
       "Improve new hire satisfaction scores"
+    ]
+  },
+  {
+    id: "PROJ-006",
+    name: "Legacy System Migration",
+    description: "Migrate critical business applications from legacy infrastructure to modern cloud-based solutions",
+    currentStatus: "Overdue",
+    departments: ["DEPT-001", "DEPT-008"], // Engineering, Operations
+    startedAt: new Date("2024-01-10"),
+    endDate: new Date("2024-08-15"),
+    priority: "Critical",
+    budget: 300000,
+    progress: 80,
+    projectManager: "EMP-430982", // Elijah Walker (Head of Engineering)
+    objectives: [
+      "Migrate 5 core applications to cloud",
+      "Reduce infrastructure costs by 40%",
+      "Improve system reliability and performance",
+      "Ensure zero downtime during migration"
     ]
   }
 ];
