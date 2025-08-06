@@ -1,0 +1,45 @@
+.graph {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  gap: 16px 20px;
+}
+
+.graphItem {
+  display: contents;
+}
+
+.graphLabelText {
+  grid-column: 1;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+}
+
+.graphItemValueContainer {
+  grid-column: 2;
+  background-color: var(--quaternary-color);
+  border-radius: 6px;
+  height: 16px;
+}
+
+.graphItemValue {
+  background-color: var(--color);
+  height: 100%;
+  border-radius: 6px;
+}
+
+.graphItemValueText {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+
+
+

@@ -49,7 +49,7 @@ export const employees: Employee[] = [
     role: "Frontend Developer",
     email: "sophia.kim@company.com",
     phone: "+1-555-0103",
-    employmentType: "full-time",
+    employmentType: "contract",
     managerId: "EMP-430982",
   },
   { 
@@ -61,7 +61,7 @@ export const employees: Employee[] = [
     role: "DevOps Engineer",
     email: "noah.smith@company.com",
     phone: "+1-555-0104",
-    employmentType: "full-time",
+    employmentType: "part-time",
     managerId: "EMP-430982",
   },
   { 
@@ -73,7 +73,7 @@ export const employees: Employee[] = [
     role: "Marketing Specialist",
     email: "mia.johnson@company.com",
     phone: "+1-555-0105",
-    employmentType: "full-time",
+    employmentType: "part-time",
     managerId: "EMP-158209",
   },
   { 
@@ -85,7 +85,7 @@ export const employees: Employee[] = [
     role: "Head of Operations",
     email: "lucas.brown@company.com",
     phone: "+1-555-0106",
-    employmentType: "full-time",
+    employmentType: "part-time",
   },
   { 
     id: "EMP-640281", 
@@ -96,7 +96,7 @@ export const employees: Employee[] = [
     role: "Digital Marketing Manager",
     email: "isabella.garcia@company.com",
     phone: "+1-555-0107",
-    employmentType: "full-time",
+    employmentType: "part-time",
     managerId: "EMP-158209",
   },
   { 
@@ -108,7 +108,7 @@ export const employees: Employee[] = [
     role: "Backend Developer",
     email: "ethan.lee@company.com",
     phone: "+1-555-0108",
-    employmentType: "full-time",
+    employmentType: "part-time",
     managerId: "EMP-430982",
   },
   { 
@@ -120,7 +120,7 @@ export const employees: Employee[] = [
     role: "Customer Support Specialist",
     email: "charlotte.martinez@company.com",
     phone: "+1-555-0109",
-    employmentType: "full-time",
+    employmentType: "part-time",
     managerId: "EMP-892013",
   },
   { 
@@ -168,7 +168,7 @@ export const employees: Employee[] = [
     role: "Product Analyst",
     email: "harper.lewis@company.com",
     phone: "+1-555-0113",
-    employmentType: "full-time",
+    employmentType: "intern",
     managerId: "EMP-230984",
   },
   { 
@@ -214,7 +214,7 @@ export const employees: Employee[] = [
     role: "Content Marketing Manager",
     email: "abigail.young@company.com",
     phone: "+1-555-0117",
-    employmentType: "full-time",
+    employmentType: "contract",
     managerId: "EMP-158209",
   },
   { 
@@ -274,7 +274,7 @@ export const employees: Employee[] = [
     role: "UX Designer",
     email: "jack.scott@company.com",
     phone: "+1-555-0122",
-    employmentType: "full-time",
+    employmentType: "intern",
     managerId: "EMP-230984",
   },
   { 
@@ -320,7 +320,7 @@ export const employees: Employee[] = [
     role: "QA Engineer",
     email: "sebastian.nelson@company.com",
     phone: "+1-555-0126",
-    employmentType: "full-time",
+    employmentType: "contract",
     managerId: "EMP-430982",
   },
   { 
