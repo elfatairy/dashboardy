@@ -11,7 +11,7 @@ export class ProjectsStats {
   
   render(container: HTMLElement): void {
     const totalProjects = projects.length;
-    const overDueProjects = projects.filter((project) => project.endDate < new Date()).length;
+    const overDueProjects = projects.filter((project) => project.endDate < new Date() && project.currentStatus !== "Completed").length;
     const activeProjects = projects.filter((project) => project.currentStatus === "In Progress").length;
     const totalProjectsBudgets = projects.reduce((acc, project) => acc + project.budget, 0);
 

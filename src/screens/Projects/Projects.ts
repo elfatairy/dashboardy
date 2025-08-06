@@ -12,17 +12,17 @@ export class ProjectsScreen {
   private projectsStats: ProjectsStats = new ProjectsStats();
 
   private tableProps = {
-    headers: ["Project ID", "Name", "Current Status", "Started At", "End Date", "Priority", "Budget", "Project Manager"],
+    headers: ["Project ID", "Name", "Current Status", "Priority", "Started At", "End Date", "Budget", "Project Manager"],
     rows: projects,
     renderRow: (row: Project) => {
       return `
         <tr>
           <td>${row.id}</td>
           <td>${row.name}</td>
-          <td>${row.currentStatus}</td>
+          <td><span class="${styles.statusTag} ${styles[row.currentStatus.toLowerCase().replace(" ", "-")]}">${row.currentStatus}</span></td>
+          <td><span class="${styles.PriorityBadge} ${styles[row.priority.toLowerCase()]}">${row.priority}</span></td>
           <td>${row.startedAt.toLocaleDateString()}</td>
           <td>${row.endDate.toLocaleDateString()}</td>
-          <td>${row.priority}</td>
           <td>${formatCurrency(row.budget)}</td>
           <td>${getEmployeeById(row.projectManager)?.name}</td>
         </tr>
