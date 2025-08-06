@@ -6,9 +6,9 @@ import { navItems } from "./src/utils/constants.ts";
 import { PayrollScreen } from "./src/screens/Payroll/Payroll.ts";
 import { DashboardScreen } from "./src/screens/Dashboard/Dashboard.ts";
 import { generateHash } from "./src/utils/helpers.ts";
-import { LineGraph } from "./src/components/LineGraph/LineGraph.ts";
 import { EmployeesScreen } from "./src/screens/Employees/Employees.ts";
 import { DepartmentsScreen } from "./src/screens/Departments/Departments.ts";
+import { ProjectsScreen } from "./src/screens/Projects/Projects.ts";
 
 export class App {
   private hash: string = "";
@@ -56,9 +56,10 @@ export class App {
 class Router {
   private routerContainer: HTMLElement | null = null;
   private Dashboard: DashboardScreen = new DashboardScreen();
-  private Payroll: PayrollScreen = new PayrollScreen();
-  private Employees: EmployeesScreen = new EmployeesScreen();
+  private Projects: ProjectsScreen = new ProjectsScreen();
   private Departments: DepartmentsScreen = new DepartmentsScreen();
+  private Employees: EmployeesScreen = new EmployeesScreen();
+  private Payroll: PayrollScreen = new PayrollScreen();
   constructor() {
     window.addEventListener("spa-navigate", () => this.renderCurrentScreen());
   }
@@ -73,14 +74,17 @@ class Router {
     const currentItem = navItems.find((item) => item.href === window.location.pathname) || navItems[0];
     this.routerContainer!.innerHTML = "";
     switch (currentItem.name) {
-      case "Payroll":
-        this.Payroll.render(this.routerContainer!);
+      case "Projects":
+        this.Projects.render(this.routerContainer!);
         break;
       case "Departments":
         this.Departments.render(this.routerContainer!);
         break;
       case "Employees":
         this.Employees.render(this.routerContainer!);
+        break;
+      case "Payroll":
+        this.Payroll.render(this.routerContainer!);
         break;
       case "Dashboard":
       default:

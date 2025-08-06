@@ -1,7 +1,7 @@
 import styles from "./EmployessEmploymentTypeGraph.module.css";
-import { generateHash } from "../../utils/helpers";
-import { HorizontalBarGraph } from "../HorizontalBarGraph/HorizontalBarGraph";
-import { employees } from "../../data/employees";
+import { generateHash } from "../../../utils/helpers";
+import { HorizontalBarGraph } from "../../ui/HorizontalBarGraph/HorizontalBarGraph";
+import { employees } from "../../../data/employees";
 
 export class EmployessEmploymentTypeGraph {
   private hash: string = "";

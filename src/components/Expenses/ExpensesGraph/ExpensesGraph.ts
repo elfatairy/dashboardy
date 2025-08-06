@@ -1,9 +1,9 @@
 import styles from "./ExpensesGraph.module.css";
-import { generateHash, getMonthName } from "../../utils/helpers";
-import { durationOptions } from "../../utils/constants";
-import { payrolls } from "../../data/payrolls";
-import { formatCurrency } from "../../utils/helpers";
-import { LineGraph } from "../LineGraph/LineGraph";
+import { generateHash, getMonthName } from "../../../utils/helpers";
+import { durationOptions } from "../../../utils/constants";
+import { payrolls } from "../../../data/payrolls";
+import { formatCurrency } from "../../../utils/helpers";
+import { LineGraph } from "../../ui/LineGraph/LineGraph";
 
 interface ExpensesGraphProps {
   period: string;

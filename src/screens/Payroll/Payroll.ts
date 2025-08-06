@@ -1,11 +1,11 @@
 import styles from "./Payroll.module.css";
-import { Table } from "../../components/Table/Table";
+import { Table } from "../../components/ui/Table/Table";
 import { Payroll, payrolls } from "../../data/payrolls";
 import { formatCurrency, generateHash } from "../../utils/helpers";
 import { getEmployeeById } from "../../data/employees";
-import { ExpensesGraph } from "../../components/ExpensesGraph/ExpensesGraph";
+import { ExpensesGraph } from "../../components/Expenses/ExpensesGraph/ExpensesGraph";
 import { DurationTabs } from "../../components/DurationTabs/DurationTabs";
-import { ExpensesEarningsGraph } from "../../components/ExpensesEarningsGraph/ExpensesEarningsGraph";
+import { ExpensesEarningsGraph } from "../../components/Expenses/ExpensesEarningsGraph/ExpensesEarningsGraph";
 
 const statusIcons = {
   processed: `<svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g  stroke-linecap="round" stroke-linejoin="round"></g><g > <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"></path> </g></svg>`,

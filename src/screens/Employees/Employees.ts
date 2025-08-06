@@ -1,11 +1,10 @@
 import styles from "./Employees.module.css";
 import { generateHash, formatCurrency } from "../../utils/helpers";
-import { Table } from "../../components/Table/Table";
-import { Employee, employees, getEmployeeById } from "../../data/employees";
+import { Table } from "../../components/ui/Table/Table";
+import { Employee, employees } from "../../data/employees";
 import { Department, departments, getDepartmentById } from "../../data/departments";
-import { EmployeesDepartmentsGraph } from "../../components/EmployessDepartmentsGraph/EmployessDepartmentsGraph";
-import { ExpensesEarningsGraph } from "../../components/ExpensesEarningsGraph/ExpensesEarningsGraph";
-import { EmployessEmploymentTypeGraph } from "../../components/EmployessEmploymentTypeGraph/EmployessEmploymentTypeGraph";
+import { EmployeesDepartmentsGraph } from "../../components/Employees/EmployessDepartmentsGraph/EmployessDepartmentsGraph";
+import { EmployessEmploymentTypeGraph } from "../../components/Employees/EmployessEmploymentTypeGraph/EmployessEmploymentTypeGraph";
 
 const employmentTypes = [
   { label: "All Employment Types", value: "all", default: true },

@@ -1,5 +1,5 @@
 import styles from "./LineGraph.module.css";
-import { generateHash } from "../../utils/helpers";
+import { generateHash } from "../../../utils/helpers";
 
 interface LineGraphProps {
   data: {

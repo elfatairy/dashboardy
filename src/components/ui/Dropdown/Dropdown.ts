@@ -1,5 +1,5 @@
 import styles from "./Dropdown.module.css";
-import { generateHash } from "../../utils/helpers";
+import { generateHash } from "../../../utils/helpers";
 
 export type Option = {
   label: string;

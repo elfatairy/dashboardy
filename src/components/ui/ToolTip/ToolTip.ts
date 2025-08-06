@@ -1,14 +1,7 @@
 import styles from "./ToolTip.module.css";
-import { generateHash } from "../../utils/helpers";
 
 export class ToolTip {
-  private hash: string = "";
-
   private toolTipContainer: HTMLElement | null = null;
-
-  constructor() {
-    this.hash = generateHash();
-  }
 
   render(container: HTMLElement): void {
     this.toolTipContainer = document.createElement("div");

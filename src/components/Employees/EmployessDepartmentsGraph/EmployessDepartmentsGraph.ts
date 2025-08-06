@@ -1,9 +1,9 @@
 import styles from "./EmployeesDepartmentsGraph.module.css";
-import { generateHash } from "../../utils/helpers";
-import { BarGraph } from "../BarGraph/BarGraph";
-import { departments } from "../../data/departments";
-import { employees } from "../../data/employees";
-import { ToolTip } from "../ToolTip/ToolTip";
+import { generateHash } from "../../../utils/helpers";
+import { BarGraph } from "../../ui/BarGraph/BarGraph";
+import { departments } from "../../../data/departments";
+import { employees } from "../../../data/employees";
+import { ToolTip } from "../../ui/ToolTip/ToolTip";
 
 export class EmployeesDepartmentsGraph {
   private hash: string = "";

@@ -1,9 +1,9 @@
 import styles from "./ExpensesEarningsGraph.module.css";
-import { generateHash, getMonthName } from "../../utils/helpers";
-import { durationOptions } from "../../utils/constants";
-import { payrolls } from "../../data/payrolls";
-import { earnings } from "../../data/earnings";
-import { BarGraph } from "../BarGraph/BarGraph";
+import { generateHash, getMonthName } from "../../../utils/helpers";
+import { durationOptions } from "../../../utils/constants";
+import { payrolls } from "../../../data/payrolls";
+import { earnings } from "../../../data/earnings";
+import { BarGraph } from "../../ui/BarGraph/BarGraph";
 
 const colors = {
   expenses: "#2980b9",

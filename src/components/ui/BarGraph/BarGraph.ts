@@ -1,5 +1,5 @@
 import styles from "./BarGraph.module.css";
-import { generateHash } from "../../utils/helpers";
+import { generateHash } from "../../../utils/helpers";
 
 type BarGraphDataItem = {
   label: string;

@@ -1,4 +1,4 @@
-import { generateHash } from "../../utils/helpers";
+import { generateHash } from "../../../utils/helpers";
 import { Dropdown, Option } from "../Dropdown/Dropdown";
 import styles from "./Table.module.css";
 

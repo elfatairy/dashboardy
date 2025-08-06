@@ -1,8 +1,8 @@
 import styles from "./Departments.module.css";
 import { generateHash, formatCurrency } from "../../utils/helpers";
-import { Table } from "../../components/Table/Table";
-import { Employee, employees, getEmployeeById } from "../../data/employees";
-import { Department, departments, getDepartmentById } from "../../data/departments";
+import { Table } from "../../components/ui/Table/Table";
+import { getEmployeeById } from "../../data/employees";
+import { Department, departments } from "../../data/departments";
 
 export class DepartmentsScreen {
   private hash: string = "";

@@ -1,5 +1,5 @@
 import styles from "./HorizontalBarGraph.module.css";
-import { generateHash } from "../../utils/helpers";
+import { generateHash } from "../../../utils/helpers";
 
 type HorizontalBarGraphDataItem = {
   label: string;
