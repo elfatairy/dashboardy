@@ -2,6 +2,7 @@ import { getDepartmentById } from "../../../data/departments";
 import { getProjectById } from "../../../data/projects";
 import { progressBarColors } from "../../../utils/constants";
 import { generateHash } from "../../../utils/helpers";
+import { Navbar } from "../../Navbar/Navbar";
 import { ProgressBar } from "../../ui/ProgressBar/ProgressBar";
 import styles from "./ProjectDetails.module.css";
 
@@ -95,7 +96,7 @@ export class ProjectDetails {
       </div>
 
       <div class="${styles.objectivesContainer}">
-        <h4 class="${styles.objectivesTitle}">Objectives</h4>
+        <h4 class="${styles.objectivesTitle}">Objectives:</h4>
         <ul class="${styles.objectivesList}">
           ${project.objectives.map((objective) => {
             return `<li class="${styles.objective}">${objective}</li>`;

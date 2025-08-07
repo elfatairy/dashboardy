@@ -7,6 +7,7 @@ import { getEmployeeById } from "../../data/employees";
 import { ProgressBar } from "../../components/ui/ProgressBar/ProgressBar";
 import { getProjectById } from "../../data/projects";
 import { progressBarColors } from "../../utils/constants";
+import { Navbar } from "../../components/Navbar/Navbar";
 
 export class ProjectDetailsScreen {
   private hash: string = "";
@@ -20,7 +21,13 @@ export class ProjectDetailsScreen {
 
   render(container: HTMLElement): void {
     const projectId = window.location.pathname.split("/").pop() || "";
-    
+    const project = getProjectById(projectId);
+
+    if (!project) {
+      Navbar.navigate("/projects");
+      return;
+    }
+
     const tasksTableProps = {
       title: "Project Tasks",
       headers: ["Task ID", "Task Name", "Current Status", "Priority", "Progress"],
@@ -156,7 +163,7 @@ export class ProjectDetailsScreen {
     projectDetailsContainer.className = styles.projectDetails;
     projectDetailsContainer.innerHTML = `
       <div class="${styles.projectDetailsHeader}">
-        <button class="${styles.projectDetailsHeaderBackButton}">
+        <button class="${styles.projectDetailsHeaderBackButton}" >
           <svg width="24px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="#000000" stroke-width="1.8240000000000003" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
           <h2 class="${styles.projectDetailsHeaderTitle}">Projects</h2>
         </button>
@@ -170,6 +177,9 @@ export class ProjectDetailsScreen {
     this.projectDetails.render(projectDetailsContainer.querySelector(`#${this.hash}-project-details-container`) as HTMLElement, { projectId });
     this.projectTasks.render(projectDetailsContainer.querySelector(`#${this.hash}-project-tasks-container`) as HTMLElement, tasksTableProps);
 
+    projectDetailsContainer.querySelector(`.${styles.projectDetailsHeaderBackButton}`)?.addEventListener("click", () => {
+      Navbar.navigate("/projects");
+    });
 
     container.appendChild(projectDetailsContainer);
   }

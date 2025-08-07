@@ -104,7 +104,7 @@ export class Navbar {
     `;
     
     const navbarElement = navbar as any;
-    navbarElement.navButtonClickHandler = this.navButtonClickHandler.bind(this);
+    navbarElement.navButtonClickHandler = Navbar.navigate;
     
     const searchContainer = navbarElement.querySelector(`.${styles.searchContainer}`) as HTMLElement;
     searchContainer.addEventListener('click', () => {
@@ -186,13 +186,12 @@ export class Navbar {
 
     window.addEventListener('popstate', this.handlePopState.bind(this));
     
-    // Listen for spa-navigate events to update active item
     window.addEventListener('spa-navigate', ((event: CustomEvent) => {
       this.updateActiveItem(event.detail.href);
     }) as EventListener);
   }
 
-  private navButtonClickHandler(href: string): void {
+  static navigate(href: string): void {
     history.pushState(null, '', href);
     
     window.dispatchEvent(new CustomEvent('spa-navigate', { detail: { href } }));
