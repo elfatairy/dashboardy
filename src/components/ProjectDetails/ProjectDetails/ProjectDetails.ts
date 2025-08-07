@@ -67,9 +67,9 @@ export class ProjectDetails {
           ` : ``
         }
       </div>
-      <div class="${styles.row}">
+      <div class="${styles.row} ${styles.priorityDepartmentRow}">
         <div class="${styles.rowItem}">
-          <span class="${styles.PriorityBadge} ${styles[project.priority.toLowerCase()]}">${project.priority}</span>
+          <span class="${styles.PriorityBadge} ${styles[project.priority.toLowerCase()]}">${project.priority} Priority</span>
         </div>
 
         <div class="${styles.rowItem} ${styles.departmentsContainerRow}">

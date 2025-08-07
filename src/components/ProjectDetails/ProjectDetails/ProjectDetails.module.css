@@ -85,6 +85,10 @@
   color: #9f0712;
 }
 
+.priorityDepartmentRow {
+  align-items: flex-start;
+}
+
 .PriorityBadge {
   padding: 4px 8px;
   border-radius: 4px;
@@ -132,7 +136,7 @@
 .departmentsContainer {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 4px;
   max-width: 80%;
   flex-wrap: wrap;
   justify-content: flex-end;
