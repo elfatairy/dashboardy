@@ -79,9 +79,15 @@
   font-size: 12px;
 }
 
-.menu {
+.contents {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 0 5px;
+}
+
+.menu {
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -100,6 +106,60 @@
 }
 
 .menuItem:hover, .menuItem:focus, .menuItem[data-active="true"] {
+  background-color: var(--quaternary-color);
+  color: var(--primary-color);
+}
+
+.collapseMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 5px 0;
+  border-top: 1px solid var(--quaternary-color);
+}
+
+.collapseMenuHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  color: var(--secondary-color);
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.collapseMenuHeader:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+
+.collapseMenu .collapseMenuItems {
+  display: none;
+}
+
+.collapseMenu[data-open="true"] .collapseMenuItems {
+  display: block;
+}
+.collapseMenu[data-open="true"] .collapseMenuToggleIcon {
+  transform: rotate(180deg);
+}
+
+.collapseMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--secondary-color);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.collapseMenuItem:hover, .collapseMenuItem:focus, .collapseMenuItem[data-active="true"] {
   background-color: var(--quaternary-color);
   color: var(--primary-color);
 }

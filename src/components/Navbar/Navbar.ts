@@ -2,10 +2,10 @@ import styles from "./Navbar.module.css";
 import profilePic from "../../../assets/images/profile-pic.jpg";
 import { navItems } from "../../utils/constants";
 import { generateHash } from "../../utils/helpers";
+import { projects } from "../../data/projects";
 
 export class Navbar {
   private hash: string = "";
-  private activeItem: typeof navItems[number]['name'] = navItems.filter(item => item.href === window.location.pathname)[0].name;
 
   constructor() {
     this.hash = generateHash();
@@ -35,25 +35,54 @@ export class Navbar {
         </div>
       </div>
       
-      <ul class="${styles.menu}" role="menu">
-        ${navItems.map((item) => {
-          const active = this.activeItem == item.name;
-          return `
-            <a
-              href="${item.href}" 
-              onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('${item.href}'); return false;" 
-              class="${styles.menuItem}" 
-              data-active="${active}"
-              data-item-name="${item.name}"
-              role="menuitem"
-              ${active ? 'aria-current="page"' : ''}
-            >
-              <span class="${styles.menuItemIcon}">${item.icon}</span>
-              <span class="${styles.menuItemText}">${item.name}</span>
-            </a>
-          `
-        }).join('')}
-      </ul>
+      <div class="${styles.contents}">
+        <ul class="${styles.menu}" role="menu">
+          ${navItems.map((item) => {
+            const isActive = window.location.pathname === item.href;
+            return `
+              <a
+                href="${item.href}" 
+                onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('${item.href}'); return false;" 
+                class="${styles.menuItem}" 
+                data-active="${isActive}"
+                data-item-name="${item.name}"
+                role="menuitem"
+                ${isActive ? 'aria-current="page"' : ''}
+              >
+                <span class="${styles.menuItemIcon}">${item.icon}</span>
+                <span class="${styles.menuItemText}">${item.name}</span>
+              </a>
+            `
+          }).join('')}
+        </ul>
+
+        <div class="${styles.collapseMenu}" data-open="${true}">
+          <button class="${styles.collapseMenuHeader}">
+            <svg class="${styles.collapseMenuToggleIcon}" width="10px" height="10px" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g> <path d="M8.3,14h35.4c1,0,1.7,1.3,0.9,2.2L27.3,37.4c-0.6,0.8-1.9,0.8-2.5,0L7.3,16.2C6.6,15.3,7.2,14,8.3,14z"></path> </g></svg>
+            <span class="${styles.collapseMenuHeaderText}">PROJECTS</span>
+          </button>
+
+          <ul class="${styles.collapseMenuItems}">
+            ${projects.filter(project => project.currentStatus === "In Progress" || project.currentStatus === "Overdue").map((project) => {
+              const isActive = window.location.pathname === `/projects/${project.id}`;
+              return `
+                <li>
+                  <a 
+                    href="/projects/${project.id}" 
+                    onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('/projects/${project.id}'); return false;" 
+                    class="${styles.collapseMenuItem}" 
+                    data-active="${isActive}"
+                    ${isActive ? 'aria-current="page"' : ''}
+                  >
+                    <svg width="20px" height="20px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="2.4"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"></polygon><polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"></polygon><polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"></polygon></g></svg>
+                    <span class="${styles.collapseMenuItemText}">${project.name}</span>
+                  </a>
+                </li>
+              `
+            }).join('')}
+          </ul>
+        </div>
+      </div>
 
       <div class="${styles.user}">
         <img src="${profilePic}" class="${styles.userImage}" width="36px" height="36px" />
@@ -70,6 +99,14 @@ export class Navbar {
     const navbarElement = navbar as any;
     navbarElement.navButtonClickHandler = this.navButtonClickHandler.bind(this);
     
+    const collapseMenus = navbarElement.querySelectorAll(`.${styles.collapseMenu}`) as NodeListOf<HTMLElement>;
+    collapseMenus.forEach((collapseMenu) => {
+      collapseMenu.querySelector(`.${styles.collapseMenuHeader}`)?.addEventListener('click', () => {
+        const isOpen = collapseMenu.getAttribute('data-open') === 'true';
+        collapseMenu.setAttribute('data-open', (!isOpen).toString());
+      });
+    });
+
     container.appendChild(navbarPlaceholder);
     container.appendChild(navbar);
 
@@ -95,7 +132,7 @@ export class Navbar {
 
   private updateActiveItem(href: string): void {
     // Remove active state from current active item
-    const currentActiveItem = document.querySelector(`.${styles.menuItem}[data-active="true"]`);
+    const currentActiveItem = document.querySelector(`[data-active="true"]`);
     if (currentActiveItem) {
       currentActiveItem.setAttribute('data-active', 'false');
       currentActiveItem.removeAttribute('aria-current');
@@ -104,9 +141,6 @@ export class Navbar {
     // Find the new active item by matching href with navItems
     const newActiveNavItem = navItems.find(item => item.href === href);
     if (newActiveNavItem) {
-      this.activeItem = newActiveNavItem.name;
-      
-      // Update the DOM element
       const newActiveElement = document.querySelector(`.${styles.menuItem}[data-item-name="${newActiveNavItem.name}"]`);
       if (newActiveElement) {
         newActiveElement.setAttribute('data-active', 'true');
