@@ -39,22 +39,31 @@ export class Dropdown {
     dropdown.className = styles.dropdown;
     dropdown.innerHTML = `
       <div class="${styles.dropdownButton}" id="${this.hash}-dropdown-button"></div>
-      <div class="${styles.dropdownOptions}" id="${this.hash}-dropdown-options">
-        ${this.options.map((option) => `
-          <div class="${styles.dropdownOption}" data-value="${option.value}">
-            <span class="${styles.dropdownOptionLabel}">${option.label}</span>
-          </div>
-        `).join("")}
+      <div class="${styles.dropdownOptionsContainer}" id="${this.hash}-dropdown-options-container">
+        <div class="${styles.dropdownOptionsBefore}" id="${this.hash}-dropdown-options-before"></div>
+        <div class="${styles.dropdownOptions}" id="${this.hash}-dropdown-options">
+          ${this.options.map((option) => `
+            <div class="${styles.dropdownOption}" data-value="${option.value}">
+              <span class="${styles.dropdownOptionLabel}">${option.label}</span>
+            </div>
+          `).join("")}
+        </div>
       </div>
     `;
 
     this.dropdownButton = dropdown.querySelector(`#${this.hash}-dropdown-button`) as HTMLElement;
-    const dropDownOptionsOverlay = dropdown.querySelector(`#${this.hash}-dropdown-options`) as HTMLElement;
+    const dropDownOptionsOverlay = dropdown.querySelector(`#${this.hash}-dropdown-options-container`) as HTMLElement;
+    const dropDownOptionsBackground = dropdown.querySelector(`#${this.hash}-dropdown-options-before`) as HTMLElement;
     const dropDownOptions = dropDownOptionsOverlay.querySelectorAll(`.${styles.dropdownOption}`) as NodeListOf<HTMLElement>;
     
     this.dropdownButton.addEventListener("click", () => {
       this.dropdownShown = !this.dropdownShown;
       dropDownOptionsOverlay.classList.toggle(styles.show);
+    });
+
+    dropDownOptionsBackground.addEventListener("click", () => {
+      this.dropdownShown = false;
+      dropDownOptionsOverlay.classList.remove(styles.show);
     });
 
     dropDownOptions.forEach((optionItem) => {
