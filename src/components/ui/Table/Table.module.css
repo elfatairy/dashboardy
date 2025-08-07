@@ -3,6 +3,13 @@
   border-radius: 8px;
 }
 
+.title {
+  padding: 24px 16px 0 16px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
 .topContainer {
   padding: 16px;
   display: flex;

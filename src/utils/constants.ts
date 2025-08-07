@@ -70,3 +70,5 @@ export const durationOptions = [
     value: 365 * 24 * 60 * 60 * 1000,
   },
 ];
+
+export const progressBarColors: [string, string] = ["#3498db", "#8e44ad"]

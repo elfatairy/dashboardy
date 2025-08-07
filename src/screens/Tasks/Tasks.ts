@@ -5,8 +5,7 @@ import { Task, tasks } from "../../data/tasks";
 import { getEmployeeById } from "../../data/employees";
 import { getProjectById, projects } from "../../data/projects";
 import { ProgressBar } from "../../components/ui/ProgressBar/ProgressBar";
-
-const colors: [string, string] = ["#3498db", "#8e44ad"];
+import { progressBarColors } from "../../utils/constants";
 
 export class TasksScreen {
   private hash: string = "";
@@ -39,7 +38,7 @@ export class TasksScreen {
         `;
   
         const progressBar = new ProgressBar();
-        progressBar.render(tr.querySelector(`[data-progress]`) as HTMLElement, { progress: row.progress, colors: colors });
+        progressBar.render(tr.querySelector(`[data-progress]`) as HTMLElement, { progress: row.progress, colors: progressBarColors });
   
         return tr.outerHTML;
       },

@@ -49,3 +49,91 @@
 .projectTasksContainer {
   flex: 8;
 }
+
+.statusTag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.in-progress {
+  background-color: #d0fae5;
+  border-color: #a4f4cf;
+  color: #006045;
+}
+
+.overdue {
+  background-color: #fef3c6;
+  border-color: #fee685;
+  color: #973c00;
+}
+
+.completed {
+  background-color: #dff2fe;
+  border-color: #b8e6fe;
+  color: #193cb8;
+}
+
+.planning {
+  background-color: #cefafe;
+  border-color: #a2f4fd;
+  color: #005f78;
+}
+
+.on-hold {
+  background-color: #f0f0f0;
+  border-color: #d0d0d0;
+  color: #333;
+}
+
+.cancelled {
+  background-color: #ffe2e2;
+  border-color: #ffc9c9;
+  color: #9f0712;
+}
+
+.PriorityBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.critical {
+  background-color: #ffc9c9;
+  border-color: #ffc9c9;
+  color: #9f0712;
+}
+
+.high {
+  background-color: #dff2fe;
+  border-color: #b8e6fe;
+  color: #193cb8;
+}
+
+.medium {
+  background-color: #d0fae5;
+  border-color: #a4f4cf;
+  color: #006045;
+}
+
+.low {
+  background-color: #cefafe;
+  border-color: #a2f4fd;
+  color: #005f78;
+}
+
+.progressBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressBarLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+}

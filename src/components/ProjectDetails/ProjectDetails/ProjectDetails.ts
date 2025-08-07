@@ -1,10 +1,9 @@
 import { getDepartmentById } from "../../../data/departments";
 import { getProjectById } from "../../../data/projects";
+import { progressBarColors } from "../../../utils/constants";
 import { generateHash } from "../../../utils/helpers";
 import { ProgressBar } from "../../ui/ProgressBar/ProgressBar";
 import styles from "./ProjectDetails.module.css";
-
-const colors: [string, string] = ["#3498db", "#8e44ad"];
 
 interface ProjectDetailsProps {
   projectId: string;
@@ -106,7 +105,7 @@ export class ProjectDetails {
 
     this.progressBar.render(projectDetailsContainer.querySelector(`[data-progress]`) as HTMLElement, { 
       progress: project.progress, 
-      colors: colors,
+      colors: progressBarColors,
       height: 20,
       numberOfLines: 50
     });

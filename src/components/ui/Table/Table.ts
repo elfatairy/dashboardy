@@ -7,6 +7,7 @@ type Row = {
 };
 
 interface TableProps<T extends Row> {
+  title?: string;
   headers: string[];
   rows: T[];
   renderRow: (row: T) => string;
@@ -49,6 +50,7 @@ export class Table<T extends Row> {
     [key: string]: Dropdown;
   } = {};
 
+  title: string | undefined;
   headers: string[] = [];
   rawRows: T[] = [];
   handledRows: T[] = [];
@@ -88,6 +90,7 @@ export class Table<T extends Row> {
   }
 
   render(container: HTMLElement, props: TableProps<T>): void {
+    this.title = props.title;
     this.headers = props.headers;
     this.rawRows = props.rows;
     this.renderRow = props.renderRow;
@@ -108,6 +111,7 @@ export class Table<T extends Row> {
     const tableContainer = document.createElement("div");
     tableContainer.className = styles.tableContainer;
     tableContainer.innerHTML = `
+      ${this.title ? `<h2 class="${styles.title}">${this.title}</h2>` : ""}
       <div class="${styles.topContainer}" id="${this.hash}-top-container"></div>
       <table>
         ${this.tableHeader()}
