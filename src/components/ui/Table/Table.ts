@@ -11,6 +11,7 @@ interface TableProps<T extends Row> {
   rows: T[];
   renderRow: (row: T) => string;
   search: {
+    initialSearch?: string | null;
     placeholder: string;
     searchHandler: (value: string, allRows: T[]) => T[];
   };
@@ -34,17 +35,19 @@ const PAGE_SIZE = 10;
 export class Table<T extends Row> {
   private hash: string = "";
 
+  initialSearch: string | null = null;
+
   topContainer: HTMLElement | null = null;
   tableBody: HTMLElement | null = null;
   paginationText: HTMLElement | null = null;
   prevButton: HTMLButtonElement | null = null;
   nextButton: HTMLButtonElement | null = null;
   paginationPagesContainer: HTMLElement | null = null;
+  searchInput: HTMLInputElement | null = null;
   sortDropdown: Dropdown = new Dropdown();
   filterDropdowns: {
     [key: string]: Dropdown;
   } = {};
-
 
   headers: string[] = [];
   rawRows: T[] = [];
@@ -59,6 +62,7 @@ export class Table<T extends Row> {
 
   renderRow: (row: T) => string = () => ""; 
   search: {
+    initialSearch?: string | null;
     placeholder: string;
     searchHandler: (value: string, allRows: T[]) => T[];
   } = {
@@ -95,6 +99,10 @@ export class Table<T extends Row> {
       this.handledRows = this.sorting.sortHandler(this.sortValue, this.rawRows);
     } else {
       this.handledRows = this.rawRows;
+    }
+    if (this.search.initialSearch) {
+      this.searchValue = this.search.initialSearch;
+      this.handledRows = this.search.searchHandler(this.searchValue, this.rawRows);
     }
 
     const tableContainer = document.createElement("div");
@@ -158,7 +166,7 @@ export class Table<T extends Row> {
       `#${this.hash}-pagination-pages`
     ) as HTMLElement;
 
-    this.renderTopContainer();
+    this.renderTopContainer(this.search.initialSearch || null);
     this.renderTableBody();
     this.renderPaginationText();
     this.renderPaginationPages();
@@ -188,12 +196,12 @@ export class Table<T extends Row> {
     return header.outerHTML;
   }
 
-  private renderTopContainer(): void {
+  private renderTopContainer(initialSearch: string | null): void {
     if (!this.topContainer) return;
     this.topContainer.innerHTML = `
       <div class="${styles.searchContainer}">
         <svg class="${styles.searchIcon}" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <input type="text" class="${styles.searchInput}" placeholder="${this.search.placeholder}" id="${this.hash}-search-input" />
+        <input type="text" class="${styles.searchInput}" placeholder="${this.search.placeholder}" id="${this.hash}-search-input" value="${initialSearch || ""}" />
       </div>
 
       <div class="${styles.rightContainer}">
@@ -203,6 +211,10 @@ export class Table<T extends Row> {
         `).join("") : ""}
       </div>
     `;
+
+    this.searchInput = this.topContainer.querySelector(
+      `#${this.hash}-search-input`
+    ) as HTMLInputElement;
 
     const sortDropdown = this.topContainer.querySelector(
       `#${this.hash}-sort-dropdown`

@@ -1,11 +1,18 @@
 import styles from "./Navbar.module.css";
 import profilePic from "../../../assets/images/profile-pic.jpg";
-import { navItems } from "../../utils/constants";
-import { generateHash } from "../../utils/helpers";
-import { projects } from "../../data/projects";
+import { icons, navItems } from "../../utils/constants";
+import { formatCurrency, generateHash } from "../../utils/helpers";
+import { getProjectById, projects } from "../../data/projects";
+import { SearchOverlay, SearchResultItem } from "../SearchOverlay/SearchOverlay";
+import { employees, getEmployeeById } from "../../data/employees";
+import { departments, getDepartmentById } from "../../data/departments";
+import { tasks } from "../../data/tasks";
+import { payrolls } from "../../data/payrolls";
 
 export class Navbar {
   private hash: string = "";
+
+  private searchOverlay: SearchOverlay = new SearchOverlay();
 
   constructor() {
     this.hash = generateHash();
@@ -24,16 +31,16 @@ export class Navbar {
         </div>
       </div>
 
-      <div class="${styles.searchContainer}">
+      <button class="${styles.searchContainer}">
         <div class="${styles.searchInputContainer}">
-          <input type="text" class="${styles.searchInput}" placeholder="Search Anything..." role="search" />
+          <span class="${styles.searchInput}" role="search">Search Anything...</span>
           <svg class="${styles.searchIcon}" width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="${styles.commandKContainer}">
             <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><title>Command</title><path d="M10 10V7C10 5.34315 8.65685 4 7 4C5.34315 4 4 5.34315 4 7C4 8.65685 5.34315 10 7 10H10ZM10 10V14M10 10H14M10 14V17C10 18.6569 8.65685 20 7 20C5.34315 20 4 18.6569 4 17C4 15.3431 5.34315 14 7 14H10ZM10 14H14M14 10H17C18.6569 10 20 8.65685 20 7C20 5.34315 18.6569 4 17 4C15.3431 4 14 5.34315 14 7V10ZM14 10V14M14 14H17C18.6569 14 20 15.3431 20 17C20 18.6569 18.6569 20 17 20C15.3431 20 14 18.6569 14 17V14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="${styles.commandKText}">K</span>
           </div>
         </div>
-      </div>
+      </button>
       
       <div class="${styles.contents}">
         <ul class="${styles.menu}" role="menu">
@@ -99,6 +106,20 @@ export class Navbar {
     const navbarElement = navbar as any;
     navbarElement.navButtonClickHandler = this.navButtonClickHandler.bind(this);
     
+    const searchContainer = navbarElement.querySelector(`.${styles.searchContainer}`) as HTMLElement;
+    searchContainer.addEventListener('click', () => {
+      this.searchOverlay.show();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (
+        (e.ctrlKey && (e.key === 'k' || e.key === 'K')) ||
+        (e.metaKey && (e.key === 'k' || e.key === 'K'))
+      ) {
+        e.preventDefault();
+        this.searchOverlay.show();
+      }
+    });
+
     const collapseMenus = navbarElement.querySelectorAll(`.${styles.collapseMenu}`) as NodeListOf<HTMLElement>;
     collapseMenus.forEach((collapseMenu) => {
       collapseMenu.querySelector(`.${styles.collapseMenuHeader}`)?.addEventListener('click', () => {
@@ -107,8 +128,61 @@ export class Navbar {
       });
     });
 
+    const searchOverlayContainer = document.createElement("div");
+    this.searchOverlay.render(searchOverlayContainer, {
+      onSearch: (query: string) => {
+        const results: SearchResultItem[] = [];
+        projects.filter(project => (
+          project.id.toString().includes(query) || 
+          project.name.toLowerCase().includes(query.toLowerCase())
+        )).map(project => {
+          results.push({
+            href: `/projects/${project.id}`,
+            icon: icons.projects,
+            title: project.name
+          });
+        });
+        tasks.filter(task => (
+          task.id.toString().includes(query) || 
+          task.name.toLowerCase().includes(query.toLowerCase())
+        )).map(task => {
+          results.push({
+            href: `/tasks?search=${query}`,
+            icon: icons.tasks,
+            title: task.name
+          });
+        });
+        departments.filter(department => (
+          department.id.toString().includes(query) || 
+          department.name.toLowerCase().includes(query.toLowerCase()) ||
+          department.code.toLowerCase().includes(query.toLowerCase())
+        )).map(department => {
+          results.push({
+            href: `/departments?search=${query}`,
+            icon: icons.departments,
+            title: department.name
+          });
+        });
+        employees.filter(employee => (
+          employee.id.toString().includes(query) || 
+          employee.name.toLowerCase().includes(query.toLowerCase()) ||
+          employee.phone.toString().includes(query) ||
+          employee.currentSalary.toString().includes(query) ||
+          employee.role.toLowerCase().includes(query.toLowerCase())
+        )).map(employee => {
+          results.push({
+            href: `/employees?search=${query}`,
+            icon: icons.employees,
+            title: employee.name
+          });
+        });
+        return results;
+      }
+    });
+    
     container.appendChild(navbarPlaceholder);
     container.appendChild(navbar);
+    container.appendChild(searchOverlayContainer);
 
     window.addEventListener('popstate', this.handlePopState.bind(this));
     
