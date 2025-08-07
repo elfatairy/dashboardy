@@ -178,13 +178,16 @@ html {
 }
 
 :root {
-  --primary-color: #484b6a;
+  --primary-color: #333333;
+  --secondary-color: #707070;
+  --tertiary-color: #858585;
+  --quaternary-color: #e5e5e5;
+  --quinary-color: #f5f5f5;
+  /* --primary-color: #484b6a;
   --secondary-color: #656870;
-  /* --tertiary-color: #d2d3db; */
   --tertiary-color: #aeafb9;
   --quaternary-color: #e4e5f1;
-  /* --quinary-color: #fafafa; */
-  --quinary-color: #f3f3f3;
+  --quinary-color: #f3f3f3; */
 
   --success-color: #008236;
   --error-color: #fb2c36;

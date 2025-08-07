@@ -60,7 +60,7 @@ export class LineGraph {
     const horizontalPadding = 60;
 
     ctx.beginPath();
-    ctx.strokeStyle = "#aeafb922";
+    ctx.strokeStyle = "#85858522";
     ctx.lineWidth = 8;
     for (let i = 0; i < this.data.length - 1; i++) {
       const x = (i / (this.data.length - 1)) * (this.canvas.width - 2 * horizontalPadding) + horizontalPadding;
@@ -71,7 +71,7 @@ export class LineGraph {
     
     ctx.beginPath();
     ctx.setLineDash([20, 20]);
-    ctx.strokeStyle = "#aeafb933";
+    ctx.strokeStyle = "#85858533";
     const x = (this.canvas.width - 2 * horizontalPadding) + horizontalPadding;
     ctx.moveTo(x, 0);
     ctx.lineTo(x, this.canvas.height);
@@ -79,7 +79,7 @@ export class LineGraph {
     ctx.setLineDash([]);
     
     ctx.beginPath();
-    ctx.strokeStyle = "#484b6a";
+    ctx.strokeStyle = "#333333";
     ctx.lineWidth = 12;
     ctx.moveTo(horizontalPadding, this.getHeightOfPoint(this.data[0].value, minValue, maxValue, verticalPadding));
     
@@ -96,7 +96,7 @@ export class LineGraph {
     const lastY = this.getHeightOfPoint(this.data[lastIndex].value, minValue, maxValue, verticalPadding);
     
     ctx.beginPath();
-    ctx.fillStyle = "#484b6a22";
+    ctx.fillStyle = "#33333322";
     ctx.arc(lastX, lastY, 60, 0, 2 * Math.PI);
     ctx.fill();
 
@@ -106,7 +106,7 @@ export class LineGraph {
     ctx.fill();
 
     ctx.beginPath();
-    ctx.fillStyle = "#484b6a";
+    ctx.fillStyle = "#333333";
     ctx.arc(lastX, lastY, 26, 0, 2 * Math.PI);
     ctx.fill();
 
