@@ -81,7 +81,7 @@ export class Navbar {
                     data-active="${isActive}"
                     ${isActive ? 'aria-current="page"' : ''}
                   >
-                    <svg width="20px" height="20px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="2.4"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"></polygon><polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"></polygon><polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"></polygon></g></svg>
+                    ${icons.project}
                     <span class="${styles.collapseMenuItemText}">${project.name}</span>
                   </a>
                 </li>
@@ -138,7 +138,7 @@ export class Navbar {
         )).map(project => {
           results.push({
             href: `/projects/${project.id}`,
-            icon: icons.projects,
+            icon: icons.project,
             title: project.name
           });
         });

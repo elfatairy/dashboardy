@@ -115,10 +115,6 @@ export class DepartmentsScreen {
 
     this.departmentsTable.render(departmentsContainer.querySelector(`#${this.hash}-departments-table-container`) as HTMLElement, tableProps);
 
-    // window.addEventListener("spa-navigate", () => {
-    //   this.departmentsTable.updateSearchValue(new URLSearchParams(window.location.search).get("search") || "");
-    // });
-
     container.appendChild(departmentsContainer);
   }
 }

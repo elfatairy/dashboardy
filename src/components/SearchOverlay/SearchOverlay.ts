@@ -87,6 +87,7 @@ export class SearchOverlay {
     });
 
     this.renderResults(defaultSearchResults);
+    this.hide();
 
     container.appendChild(this.searchOverlay);
   }
@@ -120,10 +121,18 @@ export class SearchOverlay {
     if (!this.searchOverlay) return;
     this.searchOverlay.classList.add(styles.shown);
     this.searchInput?.focus();
+
+    this.searchOverlay?.querySelectorAll('a, button, input, [tabindex]').forEach(a => {
+      (a as HTMLElement).tabIndex = 0;
+    });
   }
 
   hide() {
     if (!this.searchOverlay) return;
     this.searchOverlay.classList.remove(styles.shown);
+
+    this.searchOverlay?.querySelectorAll('a, button, input, [tabindex]').forEach(a => {
+      (a as HTMLElement).tabIndex = -1;
+    });
   }
 }

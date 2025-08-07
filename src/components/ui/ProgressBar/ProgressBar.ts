@@ -3,6 +3,8 @@ import { generateHash, getColor } from "../../../utils/helpers";
 
 interface ProgressBarProps {
   progress: number;
+  height?: number;
+  numberOfLines?: number;
   colors: [string, string];
 }
 
@@ -18,22 +20,23 @@ export class ProgressBar {
     progressBar.className = styles.progressBar;
 
     const lineWidth = 3;
+    const lineHeight = props.height ?? 15;
     const lineGap = 1.5;
-    const lineCount = 15;
+    const lineCount = props.numberOfLines ?? 15;
     const svgWidth = lineWidth * lineCount + lineGap * (lineCount - 1);
     const color = getColor(props.colors, props.progress / 100);
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width", svgWidth.toString());
-    svg.setAttribute("height", "15");
-    svg.setAttribute("viewBox", `0 0 ${svgWidth} 15`);
+    svg.setAttribute("height", lineHeight.toString());
+    svg.setAttribute("viewBox", `0 0 ${svgWidth} ${lineHeight}`);
     
     for (let i = 0; i < lineCount; i++) {
       const line = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       line.setAttribute("x", (i * (lineWidth + lineGap)).toString());
       line.setAttribute("y", "0");
       line.setAttribute("width", lineWidth.toString());
-      line.setAttribute("height", "15");
+      line.setAttribute("height", lineHeight.toString());
       line.setAttribute("rx", "2");
       
       if (i < (props.progress / 100) * lineCount) {

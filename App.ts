@@ -10,6 +10,7 @@ import { EmployeesScreen } from "./src/screens/Employees/Employees.ts";
 import { DepartmentsScreen } from "./src/screens/Departments/Departments.ts";
 import { ProjectsScreen } from "./src/screens/Projects/Projects.ts";
 import { TasksScreen } from "./src/screens/Tasks/Tasks.ts";
+import { ProjectDetailsScreen } from "./src/screens/ProjectDetails/ProjectDetails.ts";
 
 export class App {
   private hash: string = "";
@@ -78,7 +79,7 @@ class Router {
   private Departments: DepartmentsScreen = new DepartmentsScreen();
   private Employees: EmployeesScreen = new EmployeesScreen();
   private Payroll: PayrollScreen = new PayrollScreen();
-
+  private ProjectDetails: ProjectDetailsScreen = new ProjectDetailsScreen();
   private showHeader: (show: boolean) => void;
 
   constructor(props: RouterProps) {
@@ -93,9 +94,16 @@ class Router {
   }
 
   private renderCurrentScreen(): void {
-    const currentItem = navItems.find((item) => item.href === window.location.pathname) || navItems[0];
+    let currentItemName = navItems.find((item) => item.href === window.location.pathname)?.name;
+    if (!currentItemName) {
+      if (window.location.pathname.includes("/projects/")) {
+        currentItemName = "ProjectDetails";
+      } else {
+        currentItemName = navItems[0].name;
+      }
+    }
     this.routerContainer!.innerHTML = "";
-    switch (currentItem.name) {
+    switch (currentItemName) {
       case "Projects":
         this.Projects.render(this.routerContainer!);
         break;
@@ -111,9 +119,12 @@ class Router {
       case "Payroll":
         this.Payroll.render(this.routerContainer!);
         break;
+      case "ProjectDetails":
+        this.showHeader(false);
+        this.ProjectDetails.render(this.routerContainer!);
+        break;
       case "Dashboard":
       default:
-        this.showHeader(false);
         this.Dashboard.render(this.routerContainer!);
         break;
     }

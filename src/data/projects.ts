@@ -102,7 +102,7 @@ export const projects: Project[] = [
     name: "Employee Onboarding System",
     description: "Develop a comprehensive digital onboarding platform to streamline new hire processes and improve employee experience",
     currentStatus: "In Progress",
-    departments: ["DEPT-004", "DEPT-001", "DEPT-006"], // HR, Engineering, Product
+    departments: ["DEPT-001", "DEPT-006", "DEPT-004"], // HR, Engineering, Product
     startedAt: new Date("2024-10-01"),
     endDate: new Date("2027-01-30"),
     priority: "Medium",

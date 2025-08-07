@@ -1,0 +1,51 @@
+.projectDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.projectDetailsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.projectDetailsHeaderBackButton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.projectDetailsHeaderBackButton:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+
+.projectDetailsHeaderTitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.projectDetailsContent {
+  display: flex;
+  gap: 24px;
+}
+
+.block {
+  border: 1px solid var(--quaternary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+}
+
+.projectDetailsContainer {
+  flex: 4
+}
+
+.projectTasksContainer {
+  flex: 8;
+}
