@@ -72,8 +72,12 @@ export class SearchOverlay {
     this.searchInput = this.searchOverlay.querySelector(`.${styles.searchOverlayInput}`) as HTMLInputElement;
     this.searchInput.addEventListener('input', (e) => {
       const query = (e.target as HTMLInputElement).value;
-      const results = props.onSearch(query);
-      this.renderResults(results);
+      if (query.length > 0) {
+        const results = props.onSearch(query);
+        this.renderResults(results);
+      } else {
+        this.renderResults(defaultSearchResults);
+      }
     });
 
     this.searchOverlay.addEventListener('click', (e) => {
