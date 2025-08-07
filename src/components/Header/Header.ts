@@ -6,6 +6,7 @@ export class Header {
   private hash: string = "";
   navItem: NavItem;
   headerLeft: Element | null = null;
+  header: HTMLElement | null = null;
 
   constructor() {
     this.hash = generateHash();
@@ -21,18 +22,31 @@ export class Header {
   }
   
   render(container: HTMLElement): void {
-    const header = document.createElement("div");
-    header.className = styles.header;
-    header.innerHTML = `
+    this.header = document.createElement("div");
+    this.header.className = styles.header;
+    this.header.innerHTML = `
       <div class="${styles.headerLeft}" id="${this.hash}-header-left"></div>
     `;
-    this.headerLeft = header.querySelector(`#${this.hash}-header-left`);
+    this.headerLeft = this.header.querySelector(`#${this.hash}-header-left`);
     this.updateHeaderLeft(this.headerLeft!);
-    container.appendChild(header);
+    container.appendChild(this.header);
+  }
+
+  show(): void {
+    if (this.header) {
+      this.header.style.display = "block";
+    }
+  }
+
+  hide(): void {
+    if (this.header) {
+      this.header.style.display = "none";
+    }
   }
 
   private updateHeaderLeft(headerLeft: Element): void {
-    if (headerLeft) {
+    if (headerLeft && this.header) {
+      this.header.style.display = "block";
       headerLeft.innerHTML = `
       ${this.navItem.icon}
       <h2 class="${styles.title}">${this.navItem.name}</h2>

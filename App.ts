@@ -16,7 +16,9 @@ export class App {
 
   navbar: Navbar = new Navbar();
   header: Header = new Header();
-  router: Router = new Router();
+  router: Router = new Router({
+    showHeader: (show: boolean) => this.showHeader(show)
+  });
 
   constructor() {
     this.hash = generateHash();
@@ -52,7 +54,21 @@ export class App {
 
     root.appendChild(container);
   }
+
+  private showHeader(show: boolean): void {
+    if (!this.header) return;
+    if (show) {
+      this.header.show();
+    } else {
+      this.header.hide();
+    }
+  }
 }
+
+interface RouterProps {
+  showHeader: (show: boolean) => void;
+}
+
 
 class Router {
   private routerContainer: HTMLElement | null = null;
@@ -63,7 +79,10 @@ class Router {
   private Employees: EmployeesScreen = new EmployeesScreen();
   private Payroll: PayrollScreen = new PayrollScreen();
 
-  constructor() {
+  private showHeader: (show: boolean) => void;
+
+  constructor(props: RouterProps) {
+    this.showHeader = props.showHeader;
     window.addEventListener("spa-navigate", () => this.renderCurrentScreen());
   }
 
@@ -94,6 +113,7 @@ class Router {
         break;
       case "Dashboard":
       default:
+        this.showHeader(false);
         this.Dashboard.render(this.routerContainer!);
         break;
     }
