@@ -1,17 +1,21 @@
 .tableContainer {
   border: 1px solid var(--quaternary-color);
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 16px;
 }
 
 .title {
-  padding: 24px 16px 0 16px;
+  padding: 0 16px 0 16px;
   font-size: 24px;
   font-weight: 500;
   color: var(--primary-color);
 }
 
 .topContainer {
-  padding: 16px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;

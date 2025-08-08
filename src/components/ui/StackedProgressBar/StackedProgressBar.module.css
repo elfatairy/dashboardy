@@ -1,0 +1,46 @@
+.stackedProgressBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.progressBarContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressBarItem {
+  border-radius: 10px;
+  transform: scaleX(1.3);
+}
+
+.progressBarLabels {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.progressBarLabel {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.progressBarLabelDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.progressBarLabelValue {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-color);
+}

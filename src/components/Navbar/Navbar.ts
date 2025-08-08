@@ -183,7 +183,7 @@ export class Navbar {
 
     const userLogoutButton = navbarElement.querySelector(`.${styles.userLogoutButton}`) as HTMLElement;
     userLogoutButton.addEventListener('click', () => {
-      App.showToast("Pretend logging out is working 😅");
+      App.showToast("Pretend it is working 😅");
     });
     
     container.appendChild(navbarPlaceholder);

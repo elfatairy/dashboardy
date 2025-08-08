@@ -5,6 +5,8 @@ interface ProgressBarProps {
   progress: number;
   height?: number;
   numberOfLines?: number;
+  lineGap?: number;
+  lineWidth?: number;
   colors: [string, string];
 }
 
@@ -19,9 +21,9 @@ export class ProgressBar {
     const progressBar = document.createElement("div");
     progressBar.className = styles.progressBar;
 
-    const lineWidth = 3;
+    const lineWidth = props.lineWidth ?? 3;
     const lineHeight = props.height ?? 15;
-    const lineGap = 1.5;
+    const lineGap = props.lineGap ?? 1.5;
     const lineCount = props.numberOfLines ?? 15;
     const svgWidth = lineWidth * lineCount + lineGap * (lineCount - 1);
     const color = getColor(props.colors, props.progress / 100);

@@ -8,10 +8,12 @@ type Row = {
 
 interface TableProps<T extends Row> {
   title?: string;
+  titleClassName?: string;
+  showPagination?: boolean; 
   headers: string[];
   rows: T[];
   renderRow: (row: T) => string;
-  search: {
+  search?: {
     initialSearch?: string | null;
     placeholder: string;
     searchHandler: (value: string, allRows: T[]) => T[];
@@ -51,6 +53,8 @@ export class Table<T extends Row> {
   } = {};
 
   title: string | undefined;
+  titleClassName: string | undefined;
+  showPagination: boolean = true;
   headers: string[] = [];
   rawRows: T[] = [];
   handledRows: T[] = [];
@@ -63,13 +67,10 @@ export class Table<T extends Row> {
   } = {};
 
   renderRow: (row: T) => string = () => ""; 
-  search: {
+  search?: {
     initialSearch?: string | null;
     placeholder: string;
     searchHandler: (value: string, allRows: T[]) => T[];
-  } = {
-    placeholder: "Search...",
-    searchHandler: (value: string, allRows: T[]) => allRows,
   };
   sorting?: {
     options: Option[];
@@ -91,6 +92,8 @@ export class Table<T extends Row> {
 
   render(container: HTMLElement, props: TableProps<T>): void {
     this.title = props.title;
+    this.titleClassName = props.titleClassName;
+    this.showPagination = props.showPagination ?? true;
     this.headers = props.headers;
     this.rawRows = props.rows;
     this.renderRow = props.renderRow;
@@ -103,7 +106,7 @@ export class Table<T extends Row> {
     } else {
       this.handledRows = this.rawRows;
     }
-    if (this.search.initialSearch) {
+    if (this.search?.initialSearch) {
       this.searchValue = this.search.initialSearch;
       this.handledRows = this.search.searchHandler(this.searchValue, this.rawRows);
     }
@@ -111,55 +114,66 @@ export class Table<T extends Row> {
     const tableContainer = document.createElement("div");
     tableContainer.className = styles.tableContainer;
     tableContainer.innerHTML = `
-      ${this.title ? `<h2 class="${styles.title}">${this.title}</h2>` : ""}
-      <div class="${styles.topContainer}" id="${this.hash}-top-container"></div>
-      <table>
-        ${this.tableHeader()}
-        <tbody id="${this.hash}-table-body"></tbody>
-      </table>
-      <div class="${styles.bottomContainer}">
-        <div class="${styles.paginationContainer}">
-          <button class="${styles.paginationButton}" id="${this.hash}-prev-button" disabled>
-            <svg width="12px" height="12px" viewBox="-4.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Previous</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-305.000000, -6679.000000)" fill="currentColor"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M249.365851,6538.70769 L249.365851,6538.70769 C249.770764,6539.09744 250.426289,6539.09744 250.830166,6538.70769 L259.393407,6530.44413 C260.202198,6529.66364 260.202198,6528.39747 259.393407,6527.61699 L250.768031,6519.29246 C250.367261,6518.90671 249.720021,6518.90172 249.314072,6519.28247 L249.314072,6519.28247 C248.899839,6519.67121 248.894661,6520.31179 249.302681,6520.70653 L257.196934,6528.32352 C257.601847,6528.71426 257.601847,6529.34685 257.196934,6529.73759 L249.365851,6537.29462 C248.960938,6537.68437 248.960938,6538.31795 249.365851,6538.70769" id="arrow_right-[#336]"> </path> </g> </g> </g> </g></svg>
-          </button>
-          <div class="${styles.paginationPagesContainer}" id="${this.hash}-pagination-pages"></div>
-          <button class="${styles.paginationButton}" id="${this.hash}-next-button">
-            <svg width="12px" height="12px" viewBox="-4.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Next</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-305.000000, -6679.000000)" fill="currentColor"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M249.365851,6538.70769 L249.365851,6538.70769 C249.770764,6539.09744 250.426289,6539.09744 250.830166,6538.70769 L259.393407,6530.44413 C260.202198,6529.66364 260.202198,6528.39747 259.393407,6527.61699 L250.768031,6519.29246 C250.367261,6518.90671 249.720021,6518.90172 249.314072,6519.28247 L249.314072,6519.28247 C248.899839,6519.67121 248.894661,6520.31179 249.302681,6520.70653 L257.196934,6528.32352 C257.601847,6528.71426 257.601847,6529.34685 257.196934,6529.73759 L249.365851,6537.29462 C248.960938,6537.68437 248.960938,6538.31795 249.365851,6538.70769" id="arrow_right-[#336]"> </path> </g> </g> </g> </g></svg>
-          </button>
-        </div>
-        <span id="${this.hash}-pagination-text" class="${styles.paginationText}"></span>
-      </div>
+      ${this.title ? `<h2 class="${styles.title} ${this.titleClassName}">${this.title}</h2>` : ""}
+      ${this.search || this.sorting || this.filtering ? `<div class="${styles.topContainer}" id="${this.hash}-top-container"></div>` : ""}
+      <div style="overflow-x: auto;">
+        <table>
+          ${this.tableHeader()}
+          <tbody id="${this.hash}-table-body"></tbody>
+        </table>
+        ${
+          this.showPagination ? `
+            <div class="${styles.bottomContainer}">
+              <div class="${styles.paginationContainer}">
+                <button class="${styles.paginationButton}" id="${this.hash}-prev-button" disabled>
+                  <svg width="12px" height="12px" viewBox="-4.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Previous</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-305.000000, -6679.000000)" fill="currentColor"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M249.365851,6538.70769 L249.365851,6538.70769 C249.770764,6539.09744 250.426289,6539.09744 250.830166,6538.70769 L259.393407,6530.44413 C260.202198,6529.66364 260.202198,6528.39747 259.393407,6527.61699 L250.768031,6519.29246 C250.367261,6518.90671 249.720021,6518.90172 249.314072,6519.28247 L249.314072,6519.28247 C248.899839,6519.67121 248.894661,6520.31179 249.302681,6520.70653 L257.196934,6528.32352 C257.601847,6528.71426 257.601847,6529.34685 257.196934,6529.73759 L249.365851,6537.29462 C248.960938,6537.68437 248.960938,6538.31795 249.365851,6538.70769" id="arrow_right-[#336]"> </path> </g> </g> </g> </g></svg>
+                </button>
+                <div class="${styles.paginationPagesContainer}" id="${this.hash}-pagination-pages"></div>
+                <button class="${styles.paginationButton}" id="${this.hash}-next-button">
+                  <svg width="12px" height="12px" viewBox="-4.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Next</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-305.000000, -6679.000000)" fill="currentColor"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M249.365851,6538.70769 L249.365851,6538.70769 C249.770764,6539.09744 250.426289,6539.09744 250.830166,6538.70769 L259.393407,6530.44413 C260.202198,6529.66364 260.202198,6528.39747 259.393407,6527.61699 L250.768031,6519.29246 C250.367261,6518.90671 249.720021,6518.90172 249.314072,6519.28247 L249.314072,6519.28247 C248.899839,6519.67121 248.894661,6520.31179 249.302681,6520.70653 L257.196934,6528.32352 C257.601847,6528.71426 257.601847,6529.34685 257.196934,6529.73759 L249.365851,6537.29462 C248.960938,6537.68437 248.960938,6538.31795 249.365851,6538.70769" id="arrow_right-[#336]"> </path> </g> </g> </g> </g></svg>
+                </button>
+              </div>
+                <span id="${this.hash}-pagination-text" class="${styles.paginationText}"></span>
+              </div>
+            </div>
+          ` : ""
+        }
     `;
 
-    this.prevButton = tableContainer.querySelector(
-      `#${this.hash}-prev-button`
-    ) as HTMLButtonElement;
-    this.nextButton = tableContainer.querySelector(
-      `#${this.hash}-next-button`
-    ) as HTMLButtonElement;
+    if (this.showPagination) {
+      this.prevButton = tableContainer.querySelector(
+        `#${this.hash}-prev-button`
+      ) as HTMLButtonElement;
+      this.nextButton = tableContainer.querySelector(
+        `#${this.hash}-next-button`
+      ) as HTMLButtonElement;
 
-    this.prevButton.addEventListener("click", () => {
-      this.page = Math.max(0, this.page - 1);
-      this.renderTableBody();
-      this.renderPaginationText();
-      this.renderPaginationPages();
-      this.refreshButtonsDisabledState();
-    });
+      this.prevButton.addEventListener("click", () => {
+        this.page = Math.max(0, this.page - 1);
+        this.renderTableBody();
+        this.renderPaginationText();
+        this.renderPaginationPages();
+        this.refreshButtonsDisabledState();
+      });
+      this.nextButton.addEventListener("click", () => {
+        this.page = Math.min(
+          Math.ceil(this.handledRows.length / PAGE_SIZE) - 1,
+          this.page + 1
+        );
+        this.renderTableBody();
+        this.renderPaginationText();
+        this.renderPaginationPages();
+        this.refreshButtonsDisabledState();
+      });
+  }
 
-    this.nextButton.addEventListener("click", () => {
-      this.page = Math.min(
-        Math.ceil(this.handledRows.length / PAGE_SIZE) - 1,
-        this.page + 1
-      );
-      this.renderTableBody();
-      this.renderPaginationText();
-      this.renderPaginationPages();
-      this.refreshButtonsDisabledState();
-    });
 
-    this.topContainer = tableContainer.querySelector(
-      `#${this.hash}-top-container`
-    ) as HTMLElement;
+    if (this.search || this.sorting || this.filtering) {
+      this.topContainer = tableContainer.querySelector(
+        `#${this.hash}-top-container`
+      ) as HTMLElement;
+    }
+
     this.tableBody = tableContainer.querySelector(
       `#${this.hash}-table-body`
     ) as HTMLElement;
@@ -170,7 +184,7 @@ export class Table<T extends Row> {
       `#${this.hash}-pagination-pages`
     ) as HTMLElement;
 
-    this.renderTopContainer(this.search.initialSearch || null);
+    this.renderTopContainer(this.search?.initialSearch || null);
     this.renderTableBody();
     this.renderPaginationText();
     this.renderPaginationPages();
@@ -205,7 +219,7 @@ export class Table<T extends Row> {
     this.topContainer.innerHTML = `
       <div class="${styles.searchContainer}">
         <svg class="${styles.searchIcon}" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <input type="text" class="${styles.searchInput}" placeholder="${this.search.placeholder}" id="${this.hash}-search-input" value="${initialSearch || ""}" />
+        <input type="text" class="${styles.searchInput}" placeholder="${this.search?.placeholder}" id="${this.hash}-search-input" value="${initialSearch || ""}" />
       </div>
 
       <div class="${styles.rightContainer}">
@@ -283,7 +297,7 @@ export class Table<T extends Row> {
   private getHandledRows(): T[] {
     let handledRows = this.rawRows;
     if (this.searchValue) {
-      handledRows = this.search.searchHandler(this.searchValue, handledRows);
+      handledRows = this.search?.searchHandler(this.searchValue, handledRows) ?? [];
     }
     if (this.sortValue && this.sorting) {
       handledRows = this.sorting.sortHandler(this.sortValue, handledRows);
