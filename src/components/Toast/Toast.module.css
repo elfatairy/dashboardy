@@ -1,0 +1,32 @@
+.toast {
+  position: fixed;
+  bottom: 22px;
+  opacity: 0;
+  right: 32px;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  background-color: #dbfce7ee;
+  border-color: oklch(62.7% 0.194 149.214);
+  border-width: 2px;
+  border-style: solid;
+  color: var(--primary-color);
+  padding: 4px 16px 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition-property: opacity bottom;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.toast.show {
+  opacity: 1;
+  bottom: 32px;
+}
+
+.toastMessage {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+

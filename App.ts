@@ -11,6 +11,7 @@ import { DepartmentsScreen } from "./src/screens/Departments/Departments.ts";
 import { ProjectsScreen } from "./src/screens/Projects/Projects.ts";
 import { TasksScreen } from "./src/screens/Tasks/Tasks.ts";
 import { ProjectDetailsScreen } from "./src/screens/ProjectDetails/ProjectDetails.ts";
+import { Toast } from "./src/components/Toast/Toast.ts";
 
 export class App {
   private hash: string = "";
@@ -20,6 +21,8 @@ export class App {
   router: Router = new Router({
     showHeader: (show: boolean) => this.showHeader(show)
   });
+
+  static toast: Toast = new Toast();
 
   constructor() {
     this.hash = generateHash();
@@ -39,6 +42,8 @@ export class App {
         <header id="${this.hash}-header-container"></header>
         <div id="${this.hash}-router-container" class="${styles.routerContainer}"></div>
       </main>
+
+      <div id="${this.hash}-toast-container"></div>
     `;
 
     this.navbar.render(
@@ -53,6 +58,10 @@ export class App {
       container.querySelector(`#${this.hash}-router-container`) as HTMLElement
     );
 
+    App.toast.render(
+      container.querySelector(`#${this.hash}-toast-container`) as HTMLElement
+    );
+
     root.appendChild(container);
   }
 
@@ -63,6 +72,10 @@ export class App {
     } else {
       this.header.hide();
     }
+  }
+
+  static showToast(message: string): void {
+    App.toast.show(message);
   }
 }
 

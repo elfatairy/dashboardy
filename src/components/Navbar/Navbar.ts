@@ -8,6 +8,7 @@ import { employees, getEmployeeById } from "../../data/employees";
 import { departments, getDepartmentById } from "../../data/departments";
 import { tasks } from "../../data/tasks";
 import { payrolls } from "../../data/payrolls";
+import { App } from "../../../App";
 
 export class Navbar {
   private hash: string = "";
@@ -178,6 +179,11 @@ export class Navbar {
         });
         return results;
       }
+    });
+
+    const userLogoutButton = navbarElement.querySelector(`.${styles.userLogoutButton}`) as HTMLElement;
+    userLogoutButton.addEventListener('click', () => {
+      App.showToast("Pretend logging out is working 😅");
     });
     
     container.appendChild(navbarPlaceholder);
