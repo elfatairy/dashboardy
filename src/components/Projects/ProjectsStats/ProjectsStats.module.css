@@ -2,14 +2,14 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 1rem;
 }
 
 .blockItem {
   border: 1px solid var(--quaternary-color);
-  column-span: 1;
+  grid-column: span 1;
   border-radius: 8px;
-  padding: 16px 0;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,8 +19,8 @@
 .blockItemLeft {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 0 16px;
+  gap: 1rem;
+  padding: 0 1rem;
 }
 
 .blockItem:not(:last-child) {
@@ -30,7 +30,7 @@
 .blockItemTitle {
   font-weight: 500;
   color: var(--secondary-color);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .blockItemRight {
@@ -38,18 +38,17 @@
 }
 
 .blockItemValue {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--primary-color);
 }
 
 
 
-
-
-
-
-
-
+@media (max-width: 1300px) {
+  .blockItem {
+    grid-column: span 2;
+  }
+}
 
 

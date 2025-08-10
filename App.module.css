@@ -4,9 +4,10 @@
 }
 
 .contentContainer {
-  flex: 1
+  flex: 1;
+  min-width: 0;
 }
 
 .routerContainer {
-  padding: 20px;
+  padding: 1.25rem;
 }

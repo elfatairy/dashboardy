@@ -3,7 +3,7 @@
   grid-template-rows: 1fr auto;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  gap: 0 10px;
+  gap: 0 0.625rem;
   height: 100%;
 }
 
@@ -14,7 +14,7 @@
 .barGraphItemValues {
   display: flex;
   justify-content: center;
-  gap: 2px;
+  gap: 0.125rem;
   grid-row: 1;
 }
 
@@ -35,7 +35,7 @@
 
 .barGraphLabelText {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--tertiary-color);
   text-align: center;
   grid-row: 2;

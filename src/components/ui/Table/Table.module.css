@@ -3,19 +3,19 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   padding-top: 16px;
 }
 
 .title {
-  padding: 0 16px 0 16px;
-  font-size: 24px;
+  padding: 0 1rem 0 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--primary-color);
 }
 
 .topContainer {
-  padding: 0 16px;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,18 +39,23 @@
 
 .searchInput {
   width: 250px;
-  padding: 8px 10px 8px 2.1875rem;
+  padding: 0.5rem 0.625rem 0.5rem 2.1875rem;
   border-radius: 8px;
   font-weight: 500;
   border: 1px solid var(--quinary-color);
   box-shadow: 0 0 0 1px var(--quaternary-color);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .rightContainer {
   display: flex;
   align-items: stretch;
-  gap: 10px;
+  gap: 0.625rem;
+}
+
+.tableElementContainer {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .tableContainer table {
@@ -58,6 +63,7 @@
   border-collapse: collapse;
   border-bottom: 1px solid var(--quaternary-color);
   border-top: 1px solid var(--quaternary-color);
+  /* table-layout: fixed; */
 }
 
 .tableContainer table :is(th, td):not(:last-child) {
@@ -77,11 +83,12 @@
 }
 
 .tableContainer table thead th {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   text-align: left;
   color: var(--secondary-color);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .tableContainer table tbody tr {
@@ -93,33 +100,34 @@
 }
 
 .tableContainer table tbody td {
-  padding: 12px 16px;
-  font-size: 14px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
   color: var(--secondary-color);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .bottomContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .paginationContainer {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .paginationPagesContainer {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .pageButton {
-  padding: 8px 10px;
+  padding: .5rem 0.625rem;
   border-radius: 4px;
   border: none;
   background-color: transparent;
@@ -170,8 +178,8 @@
 
 .paginationText {
   display: flex;
-  gap: 8px;
-  font-size: 12px;
+  gap: 0.5rem;
+  font-size: 0.75rem;
   color: var(--tertiary-color);
   font-weight: 500;
 }
@@ -179,5 +187,12 @@
 /* .tableContainer table tr:not(:last-child) {
   border-bottom: 1px solid var(--quaternary-color);
 } */
+
+
+@media (max-width: 1060px) {
+  .filtersContainer {
+    display: none;
+  }
+}
 
 

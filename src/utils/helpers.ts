@@ -34,3 +34,6 @@ export const getColor = (colors: [string, string], percentage: number) => {
   return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
 }
 
+export const getRootFontSize = () => {
+  return parseFloat(getComputedStyle(document.documentElement).fontSize);
+}

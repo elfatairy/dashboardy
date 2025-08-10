@@ -2,10 +2,10 @@
   border: 1px solid var(--quaternary-color);
   border-radius: 8px;
   overflow: hidden;
-  padding: 16px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .blockHeader {
@@ -17,10 +17,10 @@
 .blockHeaderLeft {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   font-weight: 500;
   color: var(--secondary-color);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .blockContent {
@@ -32,17 +32,17 @@
 .blockContentLeft {
   display: flex;
   flex-direction: column-reverse;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .blockContentLeftContent {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.875rem;
 }
 
 .totalExpenses {
-  font-size: 28px;
+  font-size: 2.33rem;
   font-weight: 600;
   color: var(--primary-color);
 }
@@ -50,15 +50,15 @@
 .comparsionText {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 0.5rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
 .comparsionTextValue {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .comparsionPeriod {
@@ -78,4 +78,10 @@
 .blockContentRight {
   height: 170px;
   width: 300px;
+}
+
+@media (max-width: 800px) {
+  .blockContentRight {
+    width: 260px;
+  }
 }

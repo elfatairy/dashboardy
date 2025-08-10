@@ -5,8 +5,8 @@
 .dropdownButton {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px 8px;
+  gap: 0.5rem;
+  padding: .5rem 0.625rem .5rem;
   border-radius: 8px;
   border: 1px solid var(--quinary-color);
   box-shadow: 0 0 0 1px var(--quaternary-color);
@@ -15,7 +15,7 @@
 }
 
 .dropdownButtonLabel {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
@@ -37,7 +37,7 @@
   border: 1px solid var(--quinary-color);
   box-shadow: 0 0 0 1px var(--quaternary-color);
   z-index: 100;
-  padding: 4px 0;
+  padding: .25rem 0;
 }
 
 .dropdownOptionsBefore {
@@ -51,9 +51,9 @@
 }
 
 .dropdownOption {
-  padding: 10px 10px;
+  padding: 0.625rem 0.625rem;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--secondary-color);
   transition: background-color 0.2s ease-in-out;
   cursor: pointer;

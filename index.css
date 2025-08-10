@@ -193,7 +193,7 @@ html {
   --success-color: #008236;
   --error-color: #fb2c36;
 
-  --navbar-width: 320px;
+  --navbar-width: 500px;
 
 }
 
@@ -208,4 +208,35 @@ a {
 
 *:focus {
   outline: var(--secondary-color) 2px solid;
+}
+
+html {
+  font-size: 24px;
+}
+
+@media (max-width: 1880px) {
+  :root {
+    --navbar-width: 400px;
+  }
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1660px) {
+  :root {
+    --navbar-width: 320px;
+    }
+    html {
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 1300px) {
+  :root {
+    --navbar-width: 260px;
+    }
+    html {
+      font-size: 14px;
+  }
 }

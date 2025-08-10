@@ -1,5 +1,5 @@
 import styles from "./ProgressBar.module.css";
-import { generateHash, getColor } from "../../../utils/helpers";
+import { generateHash, getColor, getRootFontSize } from "../../../utils/helpers";
 
 interface ProgressBarProps {
   progress: number;
@@ -21,9 +21,9 @@ export class ProgressBar {
     const progressBar = document.createElement("div");
     progressBar.className = styles.progressBar;
 
-    const lineWidth = props.lineWidth ?? 3;
-    const lineHeight = props.height ?? 15;
-    const lineGap = props.lineGap ?? 1.5;
+    const lineWidth = props.lineWidth ?? 3 * getRootFontSize() / 16;
+    const lineHeight = props.height ?? 15 * getRootFontSize() / 16;
+    const lineGap = props.lineGap ?? 1.5 * getRootFontSize() / 16 ;
     const lineCount = props.numberOfLines ?? 15;
     const svgWidth = lineWidth * lineCount + lineGap * (lineCount - 1);
     const color = getColor(props.colors, props.progress / 100);

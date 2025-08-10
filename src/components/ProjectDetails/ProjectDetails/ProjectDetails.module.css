@@ -1,18 +1,19 @@
 .projectDetailsContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 24px 16px;
+  gap: 1.125rem;
+  padding: 1.5rem 1rem;
 }
 
 .projectTitle {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--primary-color);
   font-weight: 600;
 }
 
 .projectDescription {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 500;
   color: var(--tertiary-color);
   line-height: 1.3;
@@ -22,13 +23,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .rowItem {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .dateContainer {
@@ -37,14 +38,14 @@
   align-items: center;
   color: var(--secondary-color);
   font-weight: 600;
-  font-size: 15px;
-  gap: 8px;
+  font-size: 0.9375rem;
+  gap: 0.5rem;
 }
 
 .statusTag {
-  padding: 4px 8px;
+  padding: .25rem .5rem;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -90,9 +91,9 @@
 }
 
 .PriorityBadge {
-  padding: 4px 8px;
+  padding: .25rem .5rem;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -122,7 +123,7 @@
 }
 
 .daysRemaining {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--secondary-color);
 }
@@ -136,16 +137,16 @@
 .departmentsContainer {
   display: flex;
   flex-direction: row;
-  gap: 4px;
+  gap: 0.25rem;
   max-width: 80%;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .department {
-  padding: 4px 8px;
+  padding: .25rem .5rem;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: capitalize;
   background-color: var(--quinary-color);
@@ -158,11 +159,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .progressLabel {
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--secondary-color);
   font-weight: 600;
 }
@@ -173,7 +174,7 @@
 }
 
 .progressValue {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--secondary-color);
   font-weight: 500;
 }
@@ -183,27 +184,27 @@
   margin-top: 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .objectivesTitle {
-  font-size: 16px;
+  font-size: 1rem;
   color: #666;
 }
 
 .objectivesList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   border: 1px solid var(--quaternary-color);
-  padding: 8px 8px 8px 28px;
+  padding: .5rem .5rem .5rem 2.5rem;
   border-radius: 8px;
   list-style: disc;
 }
 
 .objective {
-  padding: 4px 0;
-  font-size: 14px;
+  padding: .25rem 0;
+  font-size: 0.875rem;
   color: var(--secondary-color);
   font-weight: 500;
 }

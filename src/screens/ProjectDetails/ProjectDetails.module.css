@@ -1,7 +1,7 @@
 .projectDetails {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .projectDetailsHeader {
@@ -13,7 +13,7 @@
 .projectDetailsHeaderBackButton {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   color: var(--primary-color);
   cursor: pointer;
   border: none;
@@ -26,13 +26,13 @@
 }
 
 .projectDetailsHeaderTitle {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
 .projectDetailsContent {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: flex-start;
 }
 
@@ -52,9 +52,9 @@
 }
 
 .statusTag {
-  padding: 4px 8px;
+  padding: .25rem .5rem;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -96,9 +96,9 @@
 }
 
 .PriorityBadge {
-  padding: 4px 8px;
+  padding: .25rem .5rem;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -130,11 +130,19 @@
 .progressBarContainer {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .progressBarLabel {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--secondary-color);
+}
+
+
+@media (max-width: 2100px) {
+  .projectDetailsContent {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

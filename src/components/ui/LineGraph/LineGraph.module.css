@@ -1,19 +1,19 @@
 .lineGraph {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .lineGraphLabels {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 5px;
+  padding: 0 0.3125rem;
 }
 
 .lineGraphLabelText {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--tertiary-color);
 }
 
