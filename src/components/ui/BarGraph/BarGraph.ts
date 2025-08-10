@@ -11,6 +11,7 @@ type BarGraphDataItem = {
 
 interface BarGraphProps {
   data: BarGraphDataItem[];
+  width?: number;
   labelBlackenedBehaviour?: "last" | "never" | "on-hover";
   onHover?: (dataItem: BarGraphDataItem, position: { x: number, y: number }) => void;
   onLeave?: () => void;
@@ -24,7 +25,7 @@ export class BarGraph {
   private mousePosition: { x: number, y: number } = { x: 0, y: 0 };
   private onHover: (dataItem: BarGraphDataItem, position: { x: number, y: number }) => void = () => {};
   private onLeave: () => void = () => {};
-
+  private width: number = 20;
 
   constructor() {
     this.hash = generateHash();
@@ -33,7 +34,7 @@ export class BarGraph {
   render(container: HTMLElement, props: BarGraphProps): void {
     this.onHover = props.onHover ?? (() => {});
     this.onLeave = props.onLeave ?? (() => {});
-
+    this.width = props.width ?? 20;
 
     const data = props.data;
 
@@ -46,7 +47,7 @@ export class BarGraph {
         <div class="${styles.barGraphItemValues}">
           ${item.values.map(value => `
             <div class="${styles.barGraphItemValueContainer}">
-              <div class="${styles.barGraphItemValue}" style="--color: ${value.color}; height: ${value.value / maxValue * 100}%"></div>
+              <div class="${styles.barGraphItemValue}" style="--width: ${this.width}px; --color: ${value.color}; height: ${value.value / maxValue * 100}%"></div>
             </div>
           `).join("")}
         </div>

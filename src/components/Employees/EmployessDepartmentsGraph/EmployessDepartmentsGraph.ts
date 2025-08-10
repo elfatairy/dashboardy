@@ -56,6 +56,7 @@ export class EmployeesDepartmentsGraph {
     this.barGraph.render(this.graph, { 
       data, 
       labelBlackenedBehaviour: 'on-hover',
+      width: 40,
       onHover: (dataItem, position) => {
         const toolTipContent = document.createElement("div");
         toolTipContent.className = styles.toolTipContent;
@@ -65,7 +66,7 @@ export class EmployeesDepartmentsGraph {
 
         this.toolTip.show(toolTipContent, {
           x: position.x - 10,
-          y: window.innerHeight - position.y + 10
+          y: window.innerHeight - position.y + 10,
         });
       },
       onLeave: () => {
