@@ -39,7 +39,7 @@
 
 .searchInput {
   width: 250px;
-  padding: 8px 10px 8px 35px;
+  padding: 8px 10px 8px 2.1875rem;
   border-radius: 8px;
   font-weight: 500;
   border: 1px solid var(--quinary-color);
