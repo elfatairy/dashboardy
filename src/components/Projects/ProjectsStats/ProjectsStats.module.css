@@ -1,13 +1,15 @@
 .block {
-  border: 1px solid var(--quaternary-color);
-  border-radius: 8px;
   overflow: hidden;
-  padding: 16px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .blockItem {
-  flex: 1;
+  border: 1px solid var(--quaternary-color);
+  column-span: 1;
+  border-radius: 8px;
+  padding: 16px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
