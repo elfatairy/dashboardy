@@ -23,6 +23,12 @@
   font-size: 0.875rem;
 }
 
+.blockHeaderLeftTitle {
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
 .blockContent {
   display: flex;
   align-items: stretch;
@@ -33,30 +39,6 @@
   display: flex;
   flex-direction: column-reverse;
   gap: 0.5rem;
-}
-
-.blockHeaderRight {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.blockHeaderRightItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.blockHeaderRightItemPoint {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.blockHeaderRightItemLabel {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--secondary-color);
 }
 
 .blockContentLeftContent {
@@ -114,7 +96,6 @@
   .blockContentRight {
     display: none;
   }
-  .blockHeaderRight {
-    display: none;
-  }
 }
+
+

@@ -53,6 +53,7 @@ export class SearchOverlay {
   render(container: HTMLElement, props: SearchOverlayProps): void {
     this.searchOverlay = document.createElement("div");
     this.searchOverlay.className = styles.searchOverlay;
+    this.searchOverlay.setAttribute('data-testid', 'search-overlay');
     this.searchOverlay.innerHTML = `
       <div class="${styles.searchOverlayContainer}">
         <div class="${styles.searchOverlayHeader}">
@@ -102,7 +103,7 @@ export class SearchOverlay {
       >
         <div class="${styles.searchOverlayResultItemLeft}">
           ${result.icon}
-          <h3 class="${styles.searchOverlayResultItemTitle}">${result.title}</h3>
+          <span class="${styles.searchOverlayResultItemTitle}">${result.title}</span>
         </div>
 
         <svg width="1.125rem" height="1.125rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g> <path d="M10 16L14 12L10 8" stroke="#200E32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>

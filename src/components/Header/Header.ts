@@ -56,7 +56,7 @@ export class Header {
       this.header.style.display = "block";
       headerLeft.innerHTML = `
       ${window.innerWidth > 768 ? this.navItem.icon : `
-        <button class="${styles.menuButton}">
+        <button class="${styles.menuButton}" aria-label="Open menu">
           <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g> <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         </button>
       `}

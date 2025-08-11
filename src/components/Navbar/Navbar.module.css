@@ -231,24 +231,26 @@
 @media screen and (max-width: 768px) {
   .navbar {
     left: -100%;
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
   }
 
   .navbarContainer[data-open="true"] .navbar {
     left: 0;
+    opacity: 1;
   }
 
   .navbarPlaceholder {
-    width: 0;
-  }
-  .navbarContainer[data-open="true"] .navbarPlaceholder {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 0;
     height: 100%;
     z-index: 9;
     background-color: color-mix(in srgb, var(--quinary-color) 50%, transparent);
     backdrop-filter: blur(3px);
+  }
+  .navbarContainer[data-open="true"] .navbarPlaceholder {
+    width: 100%;
   }
 }

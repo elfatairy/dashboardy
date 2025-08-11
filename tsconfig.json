@@ -19,5 +19,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite-env.d.ts", "App.ts"]
+  "include": ["src", "vite-env.d.ts", "App.ts", "e2e/Projects.spec.ts", "e2e/Navbar.spec.ts", "e2e/Header.spec.ts"]
 }

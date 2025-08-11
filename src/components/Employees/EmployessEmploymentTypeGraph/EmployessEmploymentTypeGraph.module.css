@@ -28,6 +28,12 @@
   font-size: 0.875rem;
 }
 
+.blockHeaderLeftTitle {
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
 .toolTipContent {
   display: flex;
   align-items: center;

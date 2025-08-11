@@ -19,8 +19,14 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 500;
-  color: var(--secondary-color);
   font-size: 0.875rem;
+  color: var(--secondary-color);
+}
+
+.blockHeaderLeftTitle {
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin: 0;
 }
 
 .toolTipContent {

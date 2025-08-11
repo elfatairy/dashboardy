@@ -34,9 +34,9 @@ export class Navbar {
         </div>
       </div>
 
-      <button class="${styles.searchContainer}">
+      <button class="${styles.searchContainer}" role="search">
         <div class="${styles.searchInputContainer}">
-          <span class="${styles.searchInput}" role="search">Search Anything...</span>
+          <span class="${styles.searchInput}">Search Anything...</span>
           <svg class="${styles.searchIcon}" width="1.125rem" height="1.125rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="${styles.commandKContainer}">
             <svg width="0.75rem" height="0.75rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><title>Command</title><path d="M10 10V7C10 5.34315 8.65685 4 7 4C5.34315 4 4 5.34315 4 7C4 8.65685 5.34315 10 7 10H10ZM10 10V14M10 10H14M10 14V17C10 18.6569 8.65685 20 7 20C5.34315 20 4 18.6569 4 17C4 15.3431 5.34315 14 7 14H10ZM10 14H14M14 10H17C18.6569 10 20 8.65685 20 7C20 5.34315 18.6569 4 17 4C15.3431 4 14 5.34315 14 7V10ZM14 10V14M14 14H17C18.6569 14 20 15.3431 20 17C20 18.6569 18.6569 20 17 20C15.3431 20 14 18.6569 14 17V14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -82,6 +82,7 @@ export class Navbar {
                     onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('/projects/${project.id}'); return false;" 
                     class="${styles.collapseMenuItem}" 
                     data-active="${isActive}"
+                    role="menuitem"
                     ${isActive ? 'aria-current="page"' : ''}
                   >
                     ${icons.project}
