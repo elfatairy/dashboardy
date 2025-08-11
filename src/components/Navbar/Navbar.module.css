@@ -56,7 +56,7 @@
   border: 1px solid var(--quinary-color);
   box-shadow: 0 0 0 1px var(--quaternary-color);
   font-size: 0.875rem;
-  color: var(--tertiary-color);
+  color: var(--secondary-color);
   text-align: left;
   background-color: #fff;
 }
@@ -66,7 +66,7 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--tertiary-color);
+  color: var(--secondary-color);
 }
 
 .commandKContainer {
