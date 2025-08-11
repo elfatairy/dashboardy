@@ -1,17 +1,17 @@
 import "./index.css";
 import styles from "./App.module.css";
-import { Navbar } from "./src/components/Navbar/Navbar.ts";
-import { Header } from "./src/components/Header/Header.ts";
-import { navItems } from "./src/utils/constants.ts";
-import { PayrollScreen } from "./src/screens/Payroll/Payroll.ts";
-import { DashboardScreen } from "./src/screens/Dashboard/Dashboard.ts";
-import { generateHash } from "./src/utils/helpers.ts";
-import { EmployeesScreen } from "./src/screens/Employees/Employees.ts";
-import { DepartmentsScreen } from "./src/screens/Departments/Departments.ts";
-import { ProjectsScreen } from "./src/screens/Projects/Projects.ts";
-import { TasksScreen } from "./src/screens/Tasks/Tasks.ts";
-import { ProjectDetailsScreen } from "./src/screens/ProjectDetails/ProjectDetails.ts";
-import { Toast } from "./src/components/Toast/Toast.ts";
+import { Navbar } from "./src/components/Navbar/Navbar";
+import { Header } from "./src/components/Header/Header";
+import { navItems } from "./src/utils/constants";
+import { PayrollScreen } from "./src/screens/Payroll/Payroll";
+import { DashboardScreen } from "./src/screens/Dashboard/Dashboard";
+import { generateHash } from "./src/utils/helpers";
+import { EmployeesScreen } from "./src/screens/Employees/Employees";
+import { DepartmentsScreen } from "./src/screens/Departments/Departments";
+import { ProjectsScreen } from "./src/screens/Projects/Projects";
+import { TasksScreen } from "./src/screens/Tasks/Tasks";
+import { ProjectDetailsScreen } from "./src/screens/ProjectDetails/ProjectDetails";
+import { Toast } from "./src/components/Toast/Toast";
 
 export class App {
   private hash: string = "";
