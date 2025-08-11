@@ -36,7 +36,7 @@
 .barGraphLabelText {
   font-weight: 500;
   font-size: 0.875rem;
-  color: var(--tertiary-color);
+  color: var(--secondary-color);
   text-align: center;
   grid-row: 2;
   transition: color 0.3s ease;

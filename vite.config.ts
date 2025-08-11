@@ -8,6 +8,12 @@ export default defineConfig({
   server: {
     open: true,
   },
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     rollupOptions: {

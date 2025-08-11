@@ -1,9 +1,11 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/((?!robots\\.txt$).*)",
       "destination": "/index.html"
     }
   ]

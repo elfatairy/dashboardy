@@ -1,13 +1,18 @@
-node_modules
 .git
-src
-test-results
-e2e
-*.config.ts
-*.config.js
-vitest.config.ts
-vitest.browser.config.ts
-playwright.config.js
-tsconfig.json
-vite-env.d.ts
-.gitignore 
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+coverage
+ test-results
+ e2e
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build cache (optional)
+.vercel

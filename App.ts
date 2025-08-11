@@ -1,7 +1,7 @@
 import "./index.css";
 import styles from "./App.module.css";
-import { Navbar } from "./src/components/Navbar/Navbar";
 import { Header } from "./src/components/Header/Header";
+import { Navbar } from "./src/components/Navbar/Navbar";
 import { navItems } from "./src/utils/constants";
 import { PayrollScreen } from "./src/screens/Payroll/Payroll";
 import { DashboardScreen } from "./src/screens/Dashboard/Dashboard";

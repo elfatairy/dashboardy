@@ -1,0 +1,43 @@
+# Robots.txt for Dashboardy Dashboard Application
+# Allow all web crawlers to access most content
+User-agent: *
+
+# Disallow access to sensitive dashboard areas
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login/
+Disallow: /auth/
+Disallow: /private/
+Disallow: /user/
+Disallow: /account/
+
+# Disallow common technical directories
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /build/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /config/
+
+# Allow access to public assets
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+
+# Disallow common sensitive files
+Disallow: /*.json$
+Disallow: /*.ts$
+Disallow: /*.js.map$
+Disallow: /package.json
+Disallow: /tsconfig.json
+Disallow: /vite.config.ts
+
+# Crawl delay to be respectful (1 second)
+Crawl-delay: 1
+
+# Sitemap location (update when you create one)
+# Sitemap: https://yourdomain.com/sitemap.xml

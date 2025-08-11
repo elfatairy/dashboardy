@@ -92,7 +92,7 @@
 }
 
 .comparsionPeriod {
-  color: var(--tertiary-color);
+  color: var(--secondary-color);
 }
 
 .comparsionTextValue[data-direction="up"] {
