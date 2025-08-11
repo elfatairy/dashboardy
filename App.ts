@@ -51,7 +51,11 @@ export class App {
     );
 
     this.header.render(
-      container.querySelector(`#${this.hash}-header-container`) as HTMLElement
+      container.querySelector(`#${this.hash}-header-container`) as HTMLElement, {
+        openMenu: () => {
+          this.navbar.showNavbar();
+        }
+      }
     );
 
     this.router.render(

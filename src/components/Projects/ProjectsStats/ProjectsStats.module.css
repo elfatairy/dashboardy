@@ -51,4 +51,8 @@
   }
 }
 
-
+@media (max-width: 500px) {
+  .blockItem {
+    grid-column: span 4;
+  }
+}

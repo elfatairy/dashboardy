@@ -195,4 +195,23 @@
   }
 }
 
+@media (max-width: 768px) {
+  .searchInput {
+    width: 100%;
+  }
+  .rightContainer {
+    display: none;
+  }
+  .searchContainer {
+    width: 100%;
+  }
+}
 
+@media (max-width: 375px) {
+  .bottomContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.725rem;
+    padding: 0 0 0.8rem 0;
+  }
+}

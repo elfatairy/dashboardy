@@ -15,3 +15,9 @@
   font-weight: 500;
 }
 
+.menuButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+}

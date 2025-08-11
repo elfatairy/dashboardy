@@ -224,3 +224,15 @@
     grid-column: span 12;
   }
 }
+
+@media (max-width: 425px) {
+  .activeProjects, 
+  .tasksInProgress,
+  .activeDepartments,
+  .totalPayroll,
+  .totalEmployees,
+  .totalTasks {
+    grid-column: span 12;
+  }
+}
+

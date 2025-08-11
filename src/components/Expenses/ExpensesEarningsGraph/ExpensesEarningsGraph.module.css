@@ -109,3 +109,12 @@
     width: 260px;
   }
 }
+
+@media (max-width: 500px) {
+  .blockContentRight {
+    display: none;
+  }
+  .blockHeaderRight {
+    display: none;
+  }
+}
