@@ -34,7 +34,7 @@ export class Navbar {
         </div>
       </div>
 
-      <button class="${styles.searchContainer}" role="search">
+      <button class="${styles.searchContainer}" data-testid="search-button" title="Search Anything...">
         <div class="${styles.searchInputContainer}">
           <span class="${styles.searchInput}">Search Anything...</span>
           <svg class="${styles.searchIcon}" width="1.125rem" height="1.125rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -50,18 +50,19 @@ export class Navbar {
           ${navItems.map((item) => {
             const isActive = window.location.pathname === item.href;
             return `
-              <a
-                href="${item.href}" 
-                onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('${item.href}'); return false;" 
-                class="${styles.menuItem}" 
-                data-active="${isActive}"
-                data-item-name="${item.name}"
-                role="menuitem"
-                ${isActive ? 'aria-current="page"' : ''}
-              >
-                <span class="${styles.menuItemIcon}">${item.icon}</span>
-                <span class="${styles.menuItemText}">${item.name}</span>
-              </a>
+              <li role="menuitem">
+                <a
+                  href="${item.href}" 
+                  onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('${item.href}'); return false;" 
+                  class="${styles.menuItem}" 
+                  data-active="${isActive}"
+                  data-item-name="${item.name}"
+                  ${isActive ? 'aria-current="page"' : ''}
+                >
+                  <span class="${styles.menuItemIcon}">${item.icon}</span>
+                  <span class="${styles.menuItemText}">${item.name}</span>
+                </a>
+              </li>
             `
           }).join('')}
         </ul>
@@ -72,17 +73,16 @@ export class Navbar {
             <span class="${styles.collapseMenuHeaderText}">PROJECTS</span>
           </button>
 
-          <ul class="${styles.collapseMenuItems}">
+          <ul class="${styles.collapseMenuItems}" role="menu">
             ${projects.filter(project => project.currentStatus === "In Progress" || project.currentStatus === "Overdue").map((project) => {
               const isActive = window.location.pathname === `/projects/${project.id}`;
               return `
-                <li>
+                <li role="menuitem">
                   <a 
                     href="/projects/${project.id}" 
                     onclick="event.preventDefault(); this.closest('.${styles.navbar}').navButtonClickHandler('/projects/${project.id}'); return false;" 
                     class="${styles.collapseMenuItem}" 
                     data-active="${isActive}"
-                    role="menuitem"
                     ${isActive ? 'aria-current="page"' : ''}
                   >
                     ${icons.project}
@@ -96,7 +96,7 @@ export class Navbar {
       </div>
 
       <div class="${styles.user}">
-        <img src="${profilePic}" class="${styles.userImage}" width="36px" height="36px" />
+        <img src="${profilePic}" class="${styles.userImage}" width="36px" height="36px" alt="User Profile Picture" />
         <div class="${styles.userInfo}">
           <span class="${styles.userName}">Omar Hassan</span>
           <span class="${styles.userEmail}">elfatairy@omarhassan.net</span>

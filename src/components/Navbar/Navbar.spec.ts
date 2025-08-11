@@ -39,7 +39,7 @@ describe('Navbar', () => {
       await page.goto('http://localhost:5173');
       let opacity = await page.getByTestId('search-overlay').evaluate((el) => getComputedStyle(el).opacity);
       pwExpect(opacity).toBe('0');
-      await page.getByRole('search').click();
+      await page.getByTestId('search-button').click();
       await new Promise(resolve => setTimeout(resolve, 200));
       opacity = await page.getByTestId('search-overlay').evaluate((el) => getComputedStyle(el).opacity);
       pwExpect(opacity).toBe('1');
@@ -56,7 +56,7 @@ describe('Navbar', () => {
 
     test('should have active navbar item', async () => {
       await page.goto('http://localhost:5173');
-      await pwExpect(page.getByRole('menuitem').first()).toHaveAttribute('data-active', 'true');
+      await pwExpect(page.getByRole('menuitem').getByRole('link').first()).toHaveAttribute('data-active', 'true');
     });
 
     test("should navigate to the correct page when navbar item is clicked", async () => {
