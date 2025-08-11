@@ -1,5 +1,4 @@
 import styles from "./StackedProgressBar.module.css";
-import { generateHash } from "../../../utils/helpers";
 
 interface StackedProgressBarProps {
   data: {
@@ -10,10 +9,10 @@ interface StackedProgressBarProps {
 }
 
 export class StackedProgressBar {
-  private hash: string = "";
+  // private hash: string = "";
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement, props: StackedProgressBarProps): void {

@@ -3,7 +3,6 @@ import { generateHash } from "../../utils/helpers";
 import { ProjectDetails } from "../../components/ProjectDetails/ProjectDetails/ProjectDetails";
 import { Table } from "../../components/ui/Table/Table";
 import { Task, tasks } from "../../data/tasks";
-import { getEmployeeById } from "../../data/employees";
 import { ProgressBar } from "../../components/ui/ProgressBar/ProgressBar";
 import { getProjectById } from "../../data/projects";
 import { progressBarColors } from "../../utils/constants";

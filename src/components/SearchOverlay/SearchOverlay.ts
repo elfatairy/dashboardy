@@ -1,5 +1,4 @@
 import styles from "./SearchOverlay.module.css";
-import { generateHash } from "../../utils/helpers";
 import { icons } from "../../utils/constants";
 
 export interface SearchResultItem {
@@ -42,13 +41,13 @@ const defaultSearchResults: SearchResultItem[] = [
 ];
 
 export class SearchOverlay {
-  private hash: string = "";
+  // private hash: string = "";
   private searchOverlay: HTMLElement | undefined;
   private resultsContainer: HTMLElement | undefined;
   private searchInput: HTMLInputElement | undefined;
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement, props: SearchOverlayProps): void {

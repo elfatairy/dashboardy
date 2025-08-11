@@ -1,14 +1,13 @@
-import { generateHash } from "../../utils/helpers";
 import styles from "./Toast.module.css";
 
 export class Toast {
-  private hash: string = "";
+  // private hash: string = "";
   
   private toast: HTMLElement | null = null;
   private toastMessage: HTMLElement | null = null;
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement): void {

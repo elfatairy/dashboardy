@@ -1,5 +1,4 @@
 import styles from "./DurationTabs.module.css";
-import { generateHash } from "../../utils/helpers";
 import { durationOptions } from "../../utils/constants";
 
 interface DurationTabsProps {
@@ -7,13 +6,13 @@ interface DurationTabsProps {
 }
 
 export class DurationTabs {
-  private hash: string = "";
+  // private hash: string = "";
 
   private currentDuration: string = "30-days";
   private onChange: (value: string) => void = () => {};
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
   
   render(container: HTMLElement, props: DurationTabsProps): void {

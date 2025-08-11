@@ -1,5 +1,5 @@
 import styles from "./ProgressBar.module.css";
-import { generateHash, getColor, getRootFontSize } from "../../../utils/helpers";
+import { getColor, getRootFontSize } from "../../../utils/helpers";
 
 interface ProgressBarProps {
   progress: number;
@@ -11,10 +11,10 @@ interface ProgressBarProps {
 }
 
 export class ProgressBar {
-  private hash: string = "";
+  // private hash: string = "";
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
   
   render(container: HTMLElement, props: ProgressBarProps): void {

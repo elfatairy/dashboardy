@@ -1,8 +1,6 @@
 import { getDepartmentById } from "../../../data/departments";
 import { getProjectById } from "../../../data/projects";
 import { progressBarColors } from "../../../utils/constants";
-import { generateHash } from "../../../utils/helpers";
-import { Navbar } from "../../Navbar/Navbar";
 import { ProgressBar } from "../../ui/ProgressBar/ProgressBar";
 import styles from "./ProjectDetails.module.css";
 
@@ -11,12 +9,12 @@ interface ProjectDetailsProps {
 }
 
 export class ProjectDetails {
-  private hash: string = "";
+  // private hash: string = "";
   
   private progressBar: ProgressBar = new ProgressBar();
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement, props: ProjectDetailsProps): void {

@@ -1,5 +1,5 @@
 import styles from "./HorizontalBarGraph.module.css";
-import { generateHash, getColor } from "../../../utils/helpers";
+import { getColor } from "../../../utils/helpers";
 
 type HorizontalBarGraphDataItem = {
   label: string;
@@ -13,10 +13,10 @@ interface HorizontalBarGraphProps {
 }
 
 export class HorizontalBarGraph {
-  private hash: string = "";
+  // private hash: string = "";
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement, props: HorizontalBarGraphProps): void {

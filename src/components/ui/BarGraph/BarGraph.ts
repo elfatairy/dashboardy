@@ -1,5 +1,4 @@
 import styles from "./BarGraph.module.css";
-import { generateHash } from "../../../utils/helpers";
 
 type BarGraphDataItem = {
   label: string;
@@ -18,7 +17,7 @@ interface BarGraphProps {
 }
 
 export class BarGraph {
-  private hash: string = "";
+  // private hash: string = "";
 
   private currentlyHoveredLabel: string | null = null;
   private hoverTimeout: NodeJS.Timeout | null = null;
@@ -28,7 +27,7 @@ export class BarGraph {
   private width: number = 20;
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement, props: BarGraphProps): void {
@@ -64,7 +63,7 @@ export class BarGraph {
         }
       });
 
-      item.addEventListener("mouseenter", (e) => {
+      item.addEventListener("mouseenter", () => {
         this.currentlyHoveredLabel = item.querySelector(`.${styles.barGraphLabelText}`)?.textContent ?? null;
         this.hoverTimeout = setTimeout(() => {
           if (this.currentlyHoveredLabel) {

@@ -1,5 +1,5 @@
 import styles from "./Tasks.module.css";
-import { generateHash, formatCurrency } from "../../utils/helpers";
+import { generateHash } from "../../utils/helpers";
 import { Table } from "../../components/ui/Table/Table";
 import { Task, tasks } from "../../data/tasks";
 import { getEmployeeById } from "../../data/employees";

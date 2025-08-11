@@ -1,12 +1,12 @@
 import styles from "./ProjectsStats.module.css";
-import { formatCurrency, generateHash } from "../../../utils/helpers";
+import { formatCurrency } from "../../../utils/helpers";
 import { projects } from "../../../data/projects";
 
 export class ProjectsStats {
-  private hash: string = "";
+  // private hash: string = "";
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
   
   render(container: HTMLElement): void {

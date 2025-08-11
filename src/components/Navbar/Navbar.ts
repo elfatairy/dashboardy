@@ -1,23 +1,21 @@
 import styles from "./Navbar.module.css";
 import profilePic from "../../../assets/images/profile-pic.jpg";
 import { icons, navItems } from "../../utils/constants";
-import { formatCurrency, generateHash } from "../../utils/helpers";
-import { getProjectById, projects } from "../../data/projects";
+import { projects } from "../../data/projects";
 import { SearchOverlay, SearchResultItem } from "../SearchOverlay/SearchOverlay";
-import { employees, getEmployeeById } from "../../data/employees";
-import { departments, getDepartmentById } from "../../data/departments";
+import { employees } from "../../data/employees";
+import { departments } from "../../data/departments";
 import { tasks } from "../../data/tasks";
-import { payrolls } from "../../data/payrolls";
 import { App } from "../../../App";
 
 export class Navbar {
-  private hash: string = "";
+  // private hash: string = "";
 
   private searchOverlay: SearchOverlay = new SearchOverlay();
   private navbarContainer: HTMLElement | null = null;
 
   constructor() {
-    this.hash = generateHash();
+    // this.hash = generateHash();
   }
 
   render(container: HTMLElement): void {
@@ -211,7 +209,7 @@ export class Navbar {
     window.dispatchEvent(new CustomEvent('spa-navigate', { detail: { href } }));
   }
 
-  private handlePopState(event: PopStateEvent): void {
+  private handlePopState(): void {
     window.dispatchEvent(new CustomEvent('spa-navigate', { 
       detail: { href: window.location.pathname } 
     }));
