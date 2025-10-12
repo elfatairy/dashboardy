@@ -1,5 +1,8 @@
 // playwright.config.js
 import { defineConfig } from '@playwright/test';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 export default defineConfig({
   
@@ -16,4 +19,5 @@ export default defineConfig({
     headless: false,
     
   }
-});
+});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
