@@ -7,7 +7,6 @@
     "build": "vite build",
     "test": "vitest",
     "test:browser": "playwright test",
-    "preinstall": "node dist/setup.js"
   },
   "type": "module",
   "keywords": [],
