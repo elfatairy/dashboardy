@@ -6,7 +6,7 @@
     "start": "vite",
     "build": "vite build",
     "test": "vitest",
-    "test:browser": "playwright test",
+    "test:browser": "playwright test"
   },
   "type": "module",
   "keywords": [],
